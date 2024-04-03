@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bicrc8g4mcctp"]
+
+[ext_resource type="Texture2D" uid="uid://dysqake1npy0a" path="res://art/Breakout Tile Set Free/PNG/50-Breakout-Tiles.png" id="1_qf4qm"]
+[ext_resource type="Script" path="res://paddle.cs" id="1_rq086"]
+[ext_resource type="Texture2D" uid="uid://g4mqbvx7nvga" path="res://art/Breakout Tile Set Free/PNG/51-Breakout-Tiles.png" id="2_6c7hs"]
+[ext_resource type="Texture2D" uid="uid://5qimfr0vm5gr" path="res://art/Breakout Tile Set Free/PNG/52-Breakout-Tiles.png" id="3_2n8ot"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4wcbb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qf4qm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6c7hs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2n8ot")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5jd72"]
+radius = 16.0
+height = 122.0
+
+[node name="Paddle" type="Area2D"]
+script = ExtResource("1_rq086")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_4wcbb")
+frame_progress = 0.569512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_5jd72")
