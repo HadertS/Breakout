@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dom5sicyllooj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6jg1i"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p48pr"]
+
+[node name="Wall" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6jg1i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(20, 20)
+texture = SubResource("PlaceholderTexture2D_p48pr")

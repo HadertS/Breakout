@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://drk1lpjs8qik1"]
+
+[ext_resource type="Texture2D" uid="uid://ce8r57dks74s8" path="res://art/Breakout Tile Set Free/PNG/58-Breakout-Tiles.png" id="1_1i5o2"]
+[ext_resource type="Script" path="res://entitites/ball/ball.cs" id="1_t1xjk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4t13u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1i5o2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3046p"]
+
+[node name="Ball" type="CharacterBody2D"]
+scale = Vector2(0.075, 0.075)
+script = ExtResource("1_t1xjk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4t13u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6.5, 6.5)
+shape = SubResource("CircleShape2D_3046p")

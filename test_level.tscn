@@ -1,9 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2ib1fflxxiwa"]
+[gd_scene load_steps=4 format=3 uid="uid://d2ib1fflxxiwa"]
 
-[ext_resource type="PackedScene" uid="uid://bicrc8g4mcctp" path="res://paddle.tscn" id="1_gul4c"]
+[ext_resource type="PackedScene" uid="uid://bicrc8g4mcctp" path="res://entitites/paddle/paddle.tscn" id="1_gul4c"]
+[ext_resource type="PackedScene" uid="uid://drk1lpjs8qik1" path="res://entitites/ball/ball.tscn" id="2_7ga8n"]
+[ext_resource type="PackedScene" uid="uid://dom5sicyllooj" path="res://entitites/wall/wall.tscn" id="3_2ad51"]
 
 [node name="TestLevel" type="Node2D"]
 position = Vector2(59, 4)
 
 [node name="Paddle" parent="." instance=ExtResource("1_gul4c")]
-position = Vector2(570, 598)
+position = Vector2(517, 636)
+
+[node name="Ball" parent="." instance=ExtResource("2_7ga8n")]
+position = Vector2(517, 380)
+
+[node name="Wall" parent="." instance=ExtResource("3_2ad51")]
+position = Vector2(-49, 296)
+scale = Vector2(1, 40)
+
+[node name="Wall2" parent="." instance=ExtResource("3_2ad51")]
+position = Vector2(1081, 296)
+scale = Vector2(1, 40)
+
+[node name="Wall3" parent="." instance=ExtResource("3_2ad51")]
+position = Vector2(515, 5)
+rotation = 1.5708
+scale = Vector2(1, 60)
