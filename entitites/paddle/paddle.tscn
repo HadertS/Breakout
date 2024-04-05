@@ -27,6 +27,7 @@ radius = 16.0
 height = 122.0
 
 [node name="Paddle" type="CharacterBody2D"]
+scale = Vector2(1.5, 0.8)
 script = ExtResource("1_rq086")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
