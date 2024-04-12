@@ -17,16 +17,19 @@ public partial class ball : CharacterBody2D
 		
 		var collisionInfo = MoveAndCollide(velocity * (float)delta);
         if (collisionInfo != null){
+			if ((collisionInfo.GetCollider().GetType())==typeof(paddle)){
+				//forms a vector pointing from the paddle to the ball. The further out from the center of the paddle, the wider the ball will go.
+				Vector2 relativeVector = (GlobalPosition - (Vector2)collisionInfo.GetCollider().GetIndexed("global_position")).Normalized()*speed;
+				//mix of standard bounce collision and the relative vector. Adjust the mix to change bounce behaviour.
+				velocity = ((velocity.Bounce(collisionInfo.GetNormal()))/2+(relativeVector)/2).Normalized()*speed;
+			}
+			else {
+				velocity = velocity.Bounce(collisionInfo.GetNormal());
+			}
+			if ((collisionInfo.GetCollider().GetType())==typeof(block)){
+				collisionInfo.GetCollider().CallDeferred("OnHit");
+			}
 
-				if ((collisionInfo.GetCollider().GetType())==typeof(paddle)){
-					//forms a vector pointing from the paddle to the ball. The further out from the center of the paddle, the wider the ball will go.
-					Vector2 relativeVector = (GlobalPosition - (Vector2)collisionInfo.GetCollider().GetIndexed("global_position")).Normalized()*speed;
-					//mix of standard bounce collision and the relative vector. Adjust the mix to change bounce behaviour.
-					velocity = ((velocity.Bounce(collisionInfo.GetNormal()))/2+(relativeVector)/2).Normalized()*speed;
-				}
-				else {
-					velocity = velocity.Bounce(collisionInfo.GetNormal());
-				}
 		}
 		if (Position.Y > GetViewportRect().Size.Y){
 			ResetBall();

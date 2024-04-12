@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2ib1fflxxiwa"]
+[gd_scene load_steps=5 format=3 uid="uid://d2ib1fflxxiwa"]
 
 [ext_resource type="PackedScene" uid="uid://bicrc8g4mcctp" path="res://entitites/paddle/paddle.tscn" id="1_gul4c"]
 [ext_resource type="PackedScene" uid="uid://drk1lpjs8qik1" path="res://entitites/ball/ball.tscn" id="2_7ga8n"]
 [ext_resource type="PackedScene" uid="uid://dom5sicyllooj" path="res://entitites/wall/wall.tscn" id="3_2ad51"]
+[ext_resource type="PackedScene" uid="uid://o8j43gttkw8c" path="res://entitites/block/block.tscn" id="3_fg2of"]
 
 [node name="TestLevel" type="Node2D"]
 position = Vector2(59, 4)
@@ -13,15 +14,100 @@ position = Vector2(517, 636)
 [node name="Ball" parent="." instance=ExtResource("2_7ga8n")]
 position = Vector2(517, 380)
 
-[node name="Wall" parent="." instance=ExtResource("3_2ad51")]
-position = Vector2(-49, 296)
+[node name="Blocks" type="Node" parent="."]
+
+[node name="1hit" type="Node" parent="Blocks"]
+
+[node name="Block" parent="Blocks/1hit" instance=ExtResource("3_fg2of")]
+position = Vector2(95, 330)
+
+[node name="Block2" parent="Blocks/1hit" instance=ExtResource("3_fg2of")]
+position = Vector2(191, 330)
+
+[node name="Block3" parent="Blocks/1hit" instance=ExtResource("3_fg2of")]
+position = Vector2(287, 330)
+
+[node name="Block4" parent="Blocks/1hit" instance=ExtResource("3_fg2of")]
+position = Vector2(383, 330)
+
+[node name="Block5" parent="Blocks/1hit" instance=ExtResource("3_fg2of")]
+position = Vector2(479, 330)
+
+[node name="Block6" parent="Blocks/1hit" instance=ExtResource("3_fg2of")]
+position = Vector2(575, 330)
+
+[node name="Block7" parent="Blocks/1hit" instance=ExtResource("3_fg2of")]
+position = Vector2(671, 330)
+
+[node name="Block8" parent="Blocks/1hit" instance=ExtResource("3_fg2of")]
+position = Vector2(767, 330)
+
+[node name="Block9" parent="Blocks/1hit" instance=ExtResource("3_fg2of")]
+position = Vector2(863, 330)
+
+[node name="Block10" parent="Blocks/1hit" instance=ExtResource("3_fg2of")]
+position = Vector2(959, 330)
+
+[node name="Block11" parent="Blocks/1hit" instance=ExtResource("3_fg2of")]
+position = Vector2(1055, 330)
+
+[node name="2hit" type="Node" parent="Blocks"]
+
+[node name="Block" parent="Blocks/2hit" instance=ExtResource("3_fg2of")]
+position = Vector2(95, 298)
+hitpoints = 2
+
+[node name="Block2" parent="Blocks/2hit" instance=ExtResource("3_fg2of")]
+position = Vector2(191, 298)
+hitpoints = 2
+
+[node name="Block3" parent="Blocks/2hit" instance=ExtResource("3_fg2of")]
+position = Vector2(287, 298)
+hitpoints = 2
+
+[node name="Block4" parent="Blocks/2hit" instance=ExtResource("3_fg2of")]
+position = Vector2(383, 298)
+hitpoints = 2
+
+[node name="Block5" parent="Blocks/2hit" instance=ExtResource("3_fg2of")]
+position = Vector2(479, 298)
+hitpoints = 2
+
+[node name="Block6" parent="Blocks/2hit" instance=ExtResource("3_fg2of")]
+position = Vector2(575, 298)
+hitpoints = 2
+
+[node name="Block7" parent="Blocks/2hit" instance=ExtResource("3_fg2of")]
+position = Vector2(671, 298)
+hitpoints = 2
+
+[node name="Block8" parent="Blocks/2hit" instance=ExtResource("3_fg2of")]
+position = Vector2(767, 298)
+hitpoints = 2
+
+[node name="Block9" parent="Blocks/2hit" instance=ExtResource("3_fg2of")]
+position = Vector2(863, 298)
+hitpoints = 2
+
+[node name="Block10" parent="Blocks/2hit" instance=ExtResource("3_fg2of")]
+position = Vector2(959, 298)
+hitpoints = 2
+
+[node name="Block11" parent="Blocks/2hit" instance=ExtResource("3_fg2of")]
+position = Vector2(1055, 298)
+hitpoints = 2
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="WallLeft" parent="Walls" instance=ExtResource("3_2ad51")]
+position = Vector2(10, 300)
 scale = Vector2(1, 40)
 
-[node name="Wall2" parent="." instance=ExtResource("3_2ad51")]
-position = Vector2(1081, 296)
+[node name="WallRight" parent="Walls" instance=ExtResource("3_2ad51")]
+position = Vector2(1140, 300)
 scale = Vector2(1, 40)
 
-[node name="Wall3" parent="." instance=ExtResource("3_2ad51")]
-position = Vector2(515, 5)
+[node name="WallTop" parent="Walls" instance=ExtResource("3_2ad51")]
+position = Vector2(574, 9)
 rotation = 1.5708
 scale = Vector2(1, 60)
