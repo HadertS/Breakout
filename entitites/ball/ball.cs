@@ -8,7 +8,6 @@ public partial class ball : CharacterBody2D
 	private Vector2 startPosition;
 	private Vector2 previousPosition;
 
-
     public override void _Ready()
     {
 		velocity = new Vector2(0,1*speed);

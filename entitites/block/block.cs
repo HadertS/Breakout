@@ -4,13 +4,13 @@ using System;
 public partial class block : Node
 {
 	[Export]
-	private int hitpoints { get; set; } = 1;
+	private int Hitpoints { get; set; } = 1;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		switch (hitpoints){
+		switch (Hitpoints){
 			case 1:
 				animatedSprite2D.Play("red");
 				animatedSprite2D.SetFrameAndProgress(1,1);
@@ -35,16 +35,11 @@ public partial class block : Node
 		animatedSprite2D.Pause();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
 	private void OnHit(){
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		hitpoints--;
+		Hitpoints--;
 
-		switch(hitpoints){
+		switch(Hitpoints){
 			case 0:
 				QueueFree();
 			break;
