@@ -6,6 +6,8 @@ public partial class ball : CharacterBody2D
 	private int speed = 500;
 	private Vector2 velocity;
 	private Vector2 startPosition;
+	private Vector2 previousPosition;
+
 
     public override void _Ready()
     {
@@ -14,7 +16,6 @@ public partial class ball : CharacterBody2D
     }
     public override void _PhysicsProcess(double delta)
     {
-		
 		var collisionInfo = MoveAndCollide(velocity * (float)delta);
         if (collisionInfo != null){
 			if ((collisionInfo.GetCollider().GetType())==typeof(paddle)){
@@ -29,11 +30,18 @@ public partial class ball : CharacterBody2D
 			if ((collisionInfo.GetCollider().GetType())==typeof(block)){
 				collisionInfo.GetCollider().CallDeferred("OnHit");
 			}
-
 		}
-		if (Position.Y > GetViewportRect().Size.Y){
+		
+		if (Position == previousPosition)
+		{
+			//Ball is stuck
 			ResetBall();
 		}
+		if (Position.Y > GetViewportRect().Size.Y){
+			//Ball is out of bounds
+			ResetBall();
+		}
+		previousPosition = Position;
 	}
 
 	private void ResetBall()
