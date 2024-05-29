@@ -23,6 +23,8 @@ public partial class gameManager : Node
 		debugMenu.GetNode<Button>("DebugLevelDialogButton").Pressed += OnDebugLevelLoadPressed;
 		debugMenu.GetNode<FileDialog>("DebugLevelFileDialog").FileSelected += OnDebugLevelFileDialogFileSelected;
 		debugMenu.GetNode<OptionButton>("HBoxContainer/DebugPiercing").ItemSelected += OnDebugPiercingSelected;
+		debugMenu.GetNode<OptionButton>("HBoxContainer2/DebugTime").ItemSelected += OnDebugDebugTimeSelected;
+
 		
 		//start game paused
 		GetTree().Paused = true;
@@ -32,6 +34,10 @@ public partial class gameManager : Node
     {
 		levelInstance.GetNode<CharacterBody2D>("Paddle").SetIndexed("Piercing", GetNode<OptionButton>("PauseMenu/Panel/VBoxContainer/DebugMenu/HBoxContainer/DebugPiercing").GetSelectedId());
     }
+	private void OnDebugDebugTimeSelected(long index){
+		Engine.TimeScale = index*0.25;
+	}
+
 	private void OnDebugLevelLoadPressed()
     {
 		var levelFileDialog = GetNode<FileDialog>("PauseMenu/Panel/VBoxContainer/DebugMenu/DebugLevelFileDialog");
