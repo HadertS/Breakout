@@ -19,20 +19,22 @@ public partial class gameManager : Node
 
 		//Debug menu event connections
 		var debugMenu = GetNode<Control>("PauseMenu/Panel/VBoxContainer/DebugMenu");
-		debugMenu.GetNode<OptionButton>("VBoxContainer/HBoxContainer/DebugPiercing").ItemSelected += OnDebugPiercingSelected;
-		debugMenu.GetNode<Button>("VBoxContainer/DebugLevelDialogButton").Pressed += OnDebugLevelLoadPressed;
-		debugMenu.GetNode<FileDialog>("VBoxContainer/DebugLevelFileDialog").FileSelected += OnDebugLevelFileDialogFileSelected;
+
+		debugMenu.GetNode<Button>("DebugLevelDialogButton").Pressed += OnDebugLevelLoadPressed;
+		debugMenu.GetNode<FileDialog>("DebugLevelFileDialog").FileSelected += OnDebugLevelFileDialogFileSelected;
+		debugMenu.GetNode<OptionButton>("HBoxContainer/DebugPiercing").ItemSelected += OnDebugPiercingSelected;
 		
+		//start game paused
 		GetTree().Paused = true;
 
 	}
     private void OnDebugPiercingSelected(long index)
     {
-		levelInstance.GetNode<CharacterBody2D>("Paddle").SetIndexed("Piercing", GetNode<OptionButton>("PauseMenu/Panel/VBoxContainer/DebugMenu/VBoxContainer/HBoxContainer/DebugPiercing").GetSelectedId());
+		levelInstance.GetNode<CharacterBody2D>("Paddle").SetIndexed("Piercing", GetNode<OptionButton>("PauseMenu/Panel/VBoxContainer/DebugMenu/HBoxContainer/DebugPiercing").GetSelectedId());
     }
 	private void OnDebugLevelLoadPressed()
     {
-		var levelFileDialog = GetNode<FileDialog>("PauseMenu/Panel/VBoxContainer/DebugMenu/VBoxContainer/DebugLevelFileDialog");
+		var levelFileDialog = GetNode<FileDialog>("PauseMenu/Panel/VBoxContainer/DebugMenu/DebugLevelFileDialog");
 		levelFileDialog.Show();
     }
 	public void OnDebugLevelFileDialogFileSelected(string path)

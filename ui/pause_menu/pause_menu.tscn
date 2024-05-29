@@ -32,29 +32,27 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -37.5
-offset_right = 37.5
-offset_bottom = 40.0
+offset_left = -65.0
+offset_right = 65.0
+offset_bottom = 136.0
 grow_horizontal = 2
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "=Paused="
+horizontal_alignment = 1
 
-[node name="DebugMenu" type="Control" parent="Panel/VBoxContainer"]
+[node name="DebugMenu" type="VBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/DebugMenu"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="Panel/VBoxContainer/DebugMenu/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer/DebugMenu"]
 layout_mode = 2
 text = "Debug Menu"
 
-[node name="DebugLevelFileDialog" type="FileDialog" parent="Panel/VBoxContainer/DebugMenu/VBoxContainer"]
+[node name="DebugLevelFileDialog" type="FileDialog" parent="Panel/VBoxContainer/DebugMenu"]
 title = "Open a File"
 initial_position = 2
 size = Vector2i(500, 500)
@@ -63,21 +61,20 @@ dialog_hide_on_ok = true
 file_mode = 0
 root_subfolder = "res://levels/"
 filters = PackedStringArray("*.tscn")
-show_hidden_files = true
 
-[node name="DebugLevelDialogButton" type="Button" parent="Panel/VBoxContainer/DebugMenu/VBoxContainer"]
+[node name="DebugLevelDialogButton" type="Button" parent="Panel/VBoxContainer/DebugMenu"]
 layout_mode = 2
 text = "Load Level
 "
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/DebugMenu/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/DebugMenu"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/DebugMenu/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer/DebugMenu/HBoxContainer"]
 layout_mode = 2
 text = "Pierce"
 
-[node name="DebugPiercing" type="OptionButton" parent="Panel/VBoxContainer/DebugMenu/VBoxContainer/HBoxContainer"]
+[node name="DebugPiercing" type="OptionButton" parent="Panel/VBoxContainer/DebugMenu/HBoxContainer"]
 layout_mode = 2
 item_count = 4
 selected = 0
