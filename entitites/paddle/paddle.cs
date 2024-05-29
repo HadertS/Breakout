@@ -3,7 +3,14 @@ using System;
 
 public partial class paddle : CharacterBody2D
 {
-	private int speed = 800;
+    [Export]
+	private int Speed { get; set; } = 800;
+    [Export]
+    private float Piercing { get; set; } = 0;
+    [Export]
+    private bool YAxisMovementEnabled { get; set; } = false;
+
+    
     private AnimatedSprite2D animatedSprite;
     public override void _Ready()
     {   
@@ -13,8 +20,16 @@ public partial class paddle : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-        Velocity = inputDir * speed;
+        Vector2 inputDir;
+        if (YAxisMovementEnabled){
+            inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+        }
+        else {
+            inputDir = new Vector2(Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left"), 0);
+        }
+        Velocity = inputDir * Speed;
         MoveAndCollide(Velocity * (float)delta);
+
+        
     }
 }

@@ -11,6 +11,7 @@ position = Vector2(59, 4)
 
 [node name="Paddle" parent="." instance=ExtResource("1_gul4c")]
 position = Vector2(517, 636)
+Piercing = 6.0
 
 [node name="Ball" parent="." instance=ExtResource("2_7ga8n")]
 position = Vector2(517, 380)
@@ -56,47 +57,36 @@ position = Vector2(1055, 329)
 
 [node name="Block" parent="Blocks/Row2" instance=ExtResource("3_fg2of")]
 position = Vector2(95, 297)
-hitpoints = 2
 
 [node name="Block2" parent="Blocks/Row2" instance=ExtResource("3_fg2of")]
 position = Vector2(191, 297)
-hitpoints = 2
 
 [node name="Block3" parent="Blocks/Row2" instance=ExtResource("3_fg2of")]
 position = Vector2(287, 297)
-hitpoints = 2
 
 [node name="Block4" parent="Blocks/Row2" instance=ExtResource("3_fg2of")]
 position = Vector2(383, 297)
-hitpoints = 2
 
 [node name="Block5" parent="Blocks/Row2" instance=ExtResource("3_fg2of")]
 position = Vector2(479, 297)
-hitpoints = 2
 
 [node name="Block6" parent="Blocks/Row2" instance=ExtResource("3_fg2of")]
 position = Vector2(575, 297)
-hitpoints = 2
 
 [node name="Block7" parent="Blocks/Row2" instance=ExtResource("3_fg2of")]
 position = Vector2(671, 297)
-hitpoints = 2
 
 [node name="Block8" parent="Blocks/Row2" instance=ExtResource("3_fg2of")]
 position = Vector2(767, 297)
-hitpoints = 2
 
 [node name="Block9" parent="Blocks/Row2" instance=ExtResource("3_fg2of")]
 position = Vector2(863, 297)
-hitpoints = 2
 
 [node name="Block10" parent="Blocks/Row2" instance=ExtResource("3_fg2of")]
 position = Vector2(959, 297)
-hitpoints = 2
 
 [node name="Block11" parent="Blocks/Row2" instance=ExtResource("3_fg2of")]
 position = Vector2(1055, 297)
-hitpoints = 2
 
 [node name="Row3" type="Node" parent="Blocks"]
 
@@ -137,47 +127,36 @@ position = Vector2(1055, 265)
 
 [node name="Block" parent="Blocks/Row4" instance=ExtResource("3_fg2of")]
 position = Vector2(95, 233)
-hitpoints = 2
 
 [node name="Block2" parent="Blocks/Row4" instance=ExtResource("3_fg2of")]
 position = Vector2(191, 233)
-hitpoints = 2
 
 [node name="Block3" parent="Blocks/Row4" instance=ExtResource("3_fg2of")]
 position = Vector2(287, 233)
-hitpoints = 2
 
 [node name="Block4" parent="Blocks/Row4" instance=ExtResource("3_fg2of")]
 position = Vector2(383, 233)
-hitpoints = 2
 
 [node name="Block5" parent="Blocks/Row4" instance=ExtResource("3_fg2of")]
 position = Vector2(479, 233)
-hitpoints = 2
 
 [node name="Block6" parent="Blocks/Row4" instance=ExtResource("3_fg2of")]
 position = Vector2(575, 233)
-hitpoints = 2
 
 [node name="Block7" parent="Blocks/Row4" instance=ExtResource("3_fg2of")]
 position = Vector2(671, 233)
-hitpoints = 2
 
 [node name="Block8" parent="Blocks/Row4" instance=ExtResource("3_fg2of")]
 position = Vector2(767, 233)
-hitpoints = 2
 
 [node name="Block9" parent="Blocks/Row4" instance=ExtResource("3_fg2of")]
 position = Vector2(863, 233)
-hitpoints = 2
 
 [node name="Block10" parent="Blocks/Row4" instance=ExtResource("3_fg2of")]
 position = Vector2(959, 233)
-hitpoints = 2
 
 [node name="Block11" parent="Blocks/Row4" instance=ExtResource("3_fg2of")]
 position = Vector2(1055, 233)
-hitpoints = 2
 
 [node name="Row5" type="Node" parent="Blocks"]
 
@@ -218,47 +197,36 @@ position = Vector2(1055, 201)
 
 [node name="Block12" parent="Blocks/Row6" instance=ExtResource("3_fg2of")]
 position = Vector2(95, 169)
-hitpoints = 2
 
 [node name="Block13" parent="Blocks/Row6" instance=ExtResource("3_fg2of")]
 position = Vector2(191, 169)
-hitpoints = 2
 
 [node name="Block14" parent="Blocks/Row6" instance=ExtResource("3_fg2of")]
 position = Vector2(287, 169)
-hitpoints = 2
 
 [node name="Block15" parent="Blocks/Row6" instance=ExtResource("3_fg2of")]
 position = Vector2(383, 169)
-hitpoints = 2
 
 [node name="Block16" parent="Blocks/Row6" instance=ExtResource("3_fg2of")]
 position = Vector2(479, 169)
-hitpoints = 2
 
 [node name="Block17" parent="Blocks/Row6" instance=ExtResource("3_fg2of")]
 position = Vector2(575, 169)
-hitpoints = 2
 
 [node name="Block18" parent="Blocks/Row6" instance=ExtResource("3_fg2of")]
 position = Vector2(671, 169)
-hitpoints = 2
 
 [node name="Block19" parent="Blocks/Row6" instance=ExtResource("3_fg2of")]
 position = Vector2(767, 169)
-hitpoints = 2
 
 [node name="Block20" parent="Blocks/Row6" instance=ExtResource("3_fg2of")]
 position = Vector2(863, 169)
-hitpoints = 2
 
 [node name="Block21" parent="Blocks/Row6" instance=ExtResource("3_fg2of")]
 position = Vector2(959, 169)
-hitpoints = 2
 
 [node name="Block22" parent="Blocks/Row6" instance=ExtResource("3_fg2of")]
 position = Vector2(1055, 169)
-hitpoints = 2
 
 [node name="Row7" type="Node" parent="Blocks"]
 
@@ -299,47 +267,36 @@ position = Vector2(1055, 137)
 
 [node name="Block34" parent="Blocks/Row8" instance=ExtResource("3_fg2of")]
 position = Vector2(95, 105)
-hitpoints = 2
 
 [node name="Block35" parent="Blocks/Row8" instance=ExtResource("3_fg2of")]
 position = Vector2(191, 105)
-hitpoints = 2
 
 [node name="Block36" parent="Blocks/Row8" instance=ExtResource("3_fg2of")]
 position = Vector2(287, 105)
-hitpoints = 2
 
 [node name="Block37" parent="Blocks/Row8" instance=ExtResource("3_fg2of")]
 position = Vector2(383, 105)
-hitpoints = 2
 
 [node name="Block38" parent="Blocks/Row8" instance=ExtResource("3_fg2of")]
 position = Vector2(479, 105)
-hitpoints = 2
 
 [node name="Block39" parent="Blocks/Row8" instance=ExtResource("3_fg2of")]
 position = Vector2(575, 105)
-hitpoints = 2
 
 [node name="Block40" parent="Blocks/Row8" instance=ExtResource("3_fg2of")]
 position = Vector2(671, 105)
-hitpoints = 2
 
 [node name="Block41" parent="Blocks/Row8" instance=ExtResource("3_fg2of")]
 position = Vector2(767, 105)
-hitpoints = 2
 
 [node name="Block42" parent="Blocks/Row8" instance=ExtResource("3_fg2of")]
 position = Vector2(863, 105)
-hitpoints = 2
 
 [node name="Block43" parent="Blocks/Row8" instance=ExtResource("3_fg2of")]
 position = Vector2(959, 105)
-hitpoints = 2
 
 [node name="Block44" parent="Blocks/Row8" instance=ExtResource("3_fg2of")]
 position = Vector2(1055, 105)
-hitpoints = 2
 
 [node name="Walls" type="Node" parent="."]
 
