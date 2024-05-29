@@ -3,12 +3,51 @@ using System;
 
 public partial class gameManager : Node
 {
+	[Export]
+	private string LevelAddress { get; set; }
+	private PackedScene levelScene;
+	private Node levelInstance;
 	public override void _Ready()
 	{
-		GetTree().Paused = false;
+		if (LevelAddress != null)
+		{
+			levelScene = GD.Load<PackedScene>(LevelAddress);
+			levelInstance = levelScene.Instantiate();
+			AddChild(levelInstance);
+		}
+		
+
+		//Debug menu event connections
+		var debugMenu = GetNode<Control>("PauseMenu/Panel/VBoxContainer/DebugMenu");
+		debugMenu.GetNode<OptionButton>("VBoxContainer/HBoxContainer/DebugPiercing").ItemSelected += OnDebugPiercingSelected;
+		debugMenu.GetNode<Button>("VBoxContainer/DebugLevelDialogButton").Pressed += OnDebugLevelLoadPressed;
+		debugMenu.GetNode<FileDialog>("VBoxContainer/DebugLevelFileDialog").FileSelected += OnDebugLevelFileDialogFileSelected;
+		
+		GetTree().Paused = true;
+
+	}
+    private void OnDebugPiercingSelected(long index)
+    {
+		levelInstance.GetNode<CharacterBody2D>("Paddle").SetIndexed("Piercing", GetNode<OptionButton>("PauseMenu/Panel/VBoxContainer/DebugMenu/VBoxContainer/HBoxContainer/DebugPiercing").GetSelectedId());
+    }
+	private void OnDebugLevelLoadPressed()
+    {
+		var levelFileDialog = GetNode<FileDialog>("PauseMenu/Panel/VBoxContainer/DebugMenu/VBoxContainer/DebugLevelFileDialog");
+		levelFileDialog.Show();
+    }
+	public void OnDebugLevelFileDialogFileSelected(string path)
+	{
+		GD.Print("Loading level: " + path);
+		LevelAddress = path;
+		levelScene = GD.Load<PackedScene>(LevelAddress);
+		levelInstance.QueueFree();
+		levelInstance = levelScene.Instantiate();
+		AddChild(levelInstance);
+		GetTree().Paused = true;
 	}
 
-	public override void _Process(double delta)
+
+    public override void _Process(double delta)
 	{
 		if (Input.IsActionJustPressed("ui_cancel"))
 		{
