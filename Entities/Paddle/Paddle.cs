@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class paddle : CharacterBody2D
+public partial class Paddle : CharacterBody2D
 {
     [Export]
 	private int Speed { get; set; } = 800;
@@ -18,7 +18,7 @@ public partial class paddle : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        Vector2 inputDir = new Vector2(Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left"), 0);
+        Vector2 inputDir = new(Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left"), 0);
         Velocity = inputDir * Speed;
         MoveAndCollide(Velocity * (float)delta);
     }

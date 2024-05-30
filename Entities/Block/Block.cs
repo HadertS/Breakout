@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class block : Node
+public partial class Block : Node
 {
 	[Export]
 	private int Hitpoints { get; set; } = 1;

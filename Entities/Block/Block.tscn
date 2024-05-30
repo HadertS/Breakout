@@ -1,0 +1,56 @@
+[gd_scene load_steps=12 format=3 uid="uid://o8j43gttkw8c"]
+
+[ext_resource type="Script" path="res://Entities/Block/Block.cs" id="1_86sft"]
+[ext_resource type="Texture2D" uid="uid://5q38btdncjev" path="res://Art/Breakout Tile Set Free/PNG/01-Breakout-Tiles.png" id="1_846gx"]
+[ext_resource type="Texture2D" uid="uid://c82ws4n1q817m" path="res://Art/Breakout Tile Set Free/PNG/02-Breakout-Tiles.png" id="2_yt2v8"]
+[ext_resource type="Texture2D" uid="uid://cngnn78u8670m" path="res://Art/Breakout Tile Set Free/PNG/15-Breakout-Tiles.png" id="7_r0tx2"]
+[ext_resource type="Texture2D" uid="uid://cup410m32jo0s" path="res://Art/Breakout Tile Set Free/PNG/16-Breakout-Tiles.png" id="8_jmvoj"]
+[ext_resource type="Texture2D" uid="uid://c6bn2he1vxgne" path="res://Art/Breakout Tile Set Free/PNG/07-Breakout-Tiles.png" id="17_uo8ex"]
+[ext_resource type="Texture2D" uid="uid://dkjyv061mfcc" path="res://Art/Breakout Tile Set Free/PNG/08-Breakout-Tiles.png" id="18_n3sje"]
+[ext_resource type="Texture2D" uid="uid://byypwb1iywthg" path="res://Art/Breakout Tile Set Free/PNG/13-Breakout-Tiles.png" id="19_1fb66"]
+[ext_resource type="Texture2D" uid="uid://cdfmqvrnwuqs" path="res://Art/Breakout Tile Set Free/PNG/14-Breakout-Tiles.png" id="20_ayw2k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_11xa8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_n3sje")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_uo8ex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_yt2v8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_846gx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ayw2k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1fb66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jmvoj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r0tx2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_flx8c"]
+size = Vector2(384, 128)
+
+[node name="Block" type="CharacterBody2D" groups=["Blocks"]]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_86sft")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Blocks"]]
+sprite_frames = SubResource("SpriteFrames_11xa8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Blocks"]]
+shape = SubResource("RectangleShape2D_flx8c")

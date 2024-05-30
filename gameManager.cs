@@ -1,19 +1,17 @@
 using Godot;
 using System;
 
-public partial class gameManager : Node
+public partial class GameManager : Node
 {
 	[Export]
-	private string LevelAddress { get; set; }
+	private string StartLevelPath { get; set; }
 	private PackedScene levelScene;
 	private Node levelInstance;
 	public override void _Ready()
 	{
-		if (LevelAddress != null)
+		if (StartLevelPath != null)
 		{
-			levelScene = GD.Load<PackedScene>(LevelAddress);
-			levelInstance = levelScene.Instantiate();
-			AddChild(levelInstance);
+			LoadLevel(StartLevelPath);
 		}
 		
 
@@ -21,10 +19,9 @@ public partial class gameManager : Node
 		var debugMenu = GetNode<Control>("PauseMenu/Panel/VBoxContainer/DebugMenu");
 
 		debugMenu.GetNode<Button>("DebugLevelDialogButton").Pressed += OnDebugLevelLoadPressed;
-		debugMenu.GetNode<FileDialog>("DebugLevelFileDialog").FileSelected += OnDebugLevelFileDialogFileSelected;
+		debugMenu.GetNode<FileDialog>("DebugLevelFileDialog").FileSelected += LoadLevel;
 		debugMenu.GetNode<OptionButton>("HBoxContainer/DebugPiercing").ItemSelected += OnDebugPiercingSelected;
 		debugMenu.GetNode<OptionButton>("HBoxContainer2/DebugTime").ItemSelected += OnDebugDebugTimeSelected;
-
 		
 		//start game paused
 		GetTree().Paused = true;
@@ -43,17 +40,15 @@ public partial class gameManager : Node
 		var levelFileDialog = GetNode<FileDialog>("PauseMenu/Panel/VBoxContainer/DebugMenu/DebugLevelFileDialog");
 		levelFileDialog.Show();
     }
-	public void OnDebugLevelFileDialogFileSelected(string path)
+	public void LoadLevel(string path)
 	{
 		GD.Print("Loading level: " + path);
-		LevelAddress = path;
-		levelScene = GD.Load<PackedScene>(LevelAddress);
-		levelInstance.QueueFree();
+		levelScene = GD.Load<PackedScene>(path);
+		levelInstance?.QueueFree();
 		levelInstance = levelScene.Instantiate();
 		AddChild(levelInstance);
 		GetTree().Paused = true;
 	}
-
 
     public override void _Process(double delta)
 	{

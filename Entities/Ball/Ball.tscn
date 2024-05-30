@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://drk1lpjs8qik1"]
 
-[ext_resource type="Texture2D" uid="uid://ce8r57dks74s8" path="res://art/Breakout Tile Set Free/PNG/58-Breakout-Tiles.png" id="1_1i5o2"]
-[ext_resource type="Script" path="res://entitites/ball/ball.cs" id="1_t1xjk"]
+[ext_resource type="Texture2D" uid="uid://ce8r57dks74s8" path="res://Art/Breakout Tile Set Free/PNG/58-Breakout-Tiles.png" id="1_1i5o2"]
+[ext_resource type="Script" path="res://Entities/Ball/Ball.cs" id="1_t1xjk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4t13u"]
 animations = [{

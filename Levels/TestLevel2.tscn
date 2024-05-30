@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfcpb8wvv3xds"]
+[gd_scene load_steps=6 format=3 uid="uid://bfcpb8wvv3xds"]
 
-[ext_resource type="PackedScene" uid="uid://bicrc8g4mcctp" path="res://entitites/paddle/paddle.tscn" id="1_gul4c"]
-[ext_resource type="PackedScene" uid="uid://drk1lpjs8qik1" path="res://entitites/ball/ball.tscn" id="2_7ga8n"]
-[ext_resource type="PackedScene" uid="uid://dom5sicyllooj" path="res://entitites/wall/wall.tscn" id="3_2ad51"]
-[ext_resource type="PackedScene" uid="uid://o8j43gttkw8c" path="res://entitites/block/block.tscn" id="3_fg2of"]
+[ext_resource type="Script" path="res://Levels/Level.cs" id="1_7oqvl"]
+[ext_resource type="PackedScene" uid="uid://bicrc8g4mcctp" path="res://Entities/Paddle/Paddle.tscn" id="1_gul4c"]
+[ext_resource type="PackedScene" uid="uid://drk1lpjs8qik1" path="res://Entities/Ball/Ball.tscn" id="2_7ga8n"]
+[ext_resource type="PackedScene" uid="uid://dom5sicyllooj" path="res://Entities/Wall/Wall.tscn" id="3_2ad51"]
+[ext_resource type="PackedScene" uid="uid://o8j43gttkw8c" path="res://Entities/Block/Block.tscn" id="3_fg2of"]
 
-[node name="TestLevel" type="Node2D"]
+[node name="Level" type="Node2D"]
 process_mode = 1
 position = Vector2(59, 4)
+script = ExtResource("1_7oqvl")
 
 [node name="Paddle" parent="." instance=ExtResource("1_gul4c")]
 position = Vector2(517, 628)

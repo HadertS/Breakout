@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://5qimfr0vm5gr"
-path="res://.godot/imported/52-Breakout-Tiles.png-b2d80051e19fea8dbf7666029a825608.ctex"
+path="res://.godot/imported/52-Breakout-Tiles.png-f0ba34243e654c19fd60b068bcb8e553.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Breakout Tile Set Free/PNG/52-Breakout-Tiles.png"
-dest_files=["res://.godot/imported/52-Breakout-Tiles.png-b2d80051e19fea8dbf7666029a825608.ctex"]
+source_file="res://Art/Breakout Tile Set Free/PNG/52-Breakout-Tiles.png"
+dest_files=["res://.godot/imported/52-Breakout-Tiles.png-f0ba34243e654c19fd60b068bcb8e553.ctex"]
 
 [params]
 
