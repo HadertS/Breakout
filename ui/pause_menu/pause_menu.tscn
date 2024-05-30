@@ -36,6 +36,7 @@ offset_left = -65.0
 offset_right = 65.0
 offset_bottom = 136.0
 grow_horizontal = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
@@ -46,11 +47,13 @@ horizontal_alignment = 1
 [node name="DebugMenu" type="VBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-alignment = 2
+size_flags_vertical = 4
+alignment = 1
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/DebugMenu"]
 layout_mode = 2
 text = "Debug Menu"
+horizontal_alignment = 1
 
 [node name="DebugLevelFileDialog" type="FileDialog" parent="Panel/VBoxContainer/DebugMenu"]
 title = "Open a File"
@@ -69,6 +72,7 @@ text = "Load Level
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/DebugMenu"]
 layout_mode = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/DebugMenu/HBoxContainer"]
 layout_mode = 2
@@ -89,6 +93,7 @@ popup/item_3/id = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/DebugMenu"]
 layout_mode = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/DebugMenu/HBoxContainer2"]
 layout_mode = 2
