@@ -13,7 +13,7 @@ script = ExtResource("1_3wxdm")
 NextLevelPath = "res://Levels/TestLevel2.tscn"
 
 [node name="Paddle" parent="." instance=ExtResource("2_lh626")]
-position = Vector2(522, 611)
+position = Vector2(517, 612)
 
 [node name="Ball" parent="." instance=ExtResource("3_d0gae")]
 position = Vector2(517, 380)
