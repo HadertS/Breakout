@@ -13,7 +13,7 @@ script = ExtResource("1_eu20q")
 NextLevelPath = "res://Levels/TestLevel1.tscn"
 
 [node name="Paddle" parent="." instance=ExtResource("2_x63qy")]
-position = Vector2(522, 611)
+position = Vector2(517, 612)
 
 [node name="Ball" parent="." instance=ExtResource("3_uw4x0")]
 position = Vector2(517, 380)
@@ -21,7 +21,11 @@ position = Vector2(517, 380)
 [node name="Blocks" type="Node" parent="."]
 
 [node name="Block" parent="Blocks" instance=ExtResource("4_0xrfb")]
-position = Vector2(575, 329)
+position = Vector2(141, 329)
+
+[node name="Block2" parent="Blocks" instance=ExtResource("4_0xrfb")]
+position = Vector2(575, 148)
+PowerUpType = " PaddleSize"
 
 [node name="Walls" type="Node" parent="."]
 
