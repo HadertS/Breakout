@@ -107,6 +107,7 @@ item_count = 6
 selected = 4
 popup/item_0/text = "x0"
 popup/item_0/id = 0
+popup/item_0/disabled = true
 popup/item_1/text = "x0.25"
 popup/item_1/id = 1
 popup/item_2/text = "x0.50"

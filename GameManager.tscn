@@ -1,20 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://rwcemhgt4gof"]
 
 [ext_resource type="Script" path="res://GameManager.cs" id="1_8y23b"]
-[ext_resource type="PackedScene" uid="uid://qx8uppxush4t" path="res://UI/PauseMenu/PauseMenu.tscn" id="2_adpo5"]
+[ext_resource type="PackedScene" uid="uid://5awqrok4bxso" path="res://UI/GUI/GUI.tscn" id="2_eq2dw"]
 
-[node name="GameManager" type="Node2D"]
+[node name="GameManager" type="Node"]
 process_mode = 3
 script = ExtResource("1_8y23b")
 StartLevelPath = "res://Levels/TestLevel3.tscn"
 
-[node name="PauseMenu" parent="." instance=ExtResource("2_adpo5")]
-anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 576.0
-offset_top = 320.0
-offset_right = 576.0
-offset_bottom = 320.0
+[node name="GUI" parent="." instance=ExtResource("2_eq2dw")]

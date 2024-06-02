@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class GameManager : Node2D
+public partial class GameManager : Node
 {
 	[Export]
 	private string StartLevelPath { get; set; }

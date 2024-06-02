@@ -14,7 +14,7 @@ public partial class Paddle : CharacterBody2D
         animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         animatedSprite.Play("default");
         //this will need to be changed eventually once the powerups are properly implemented
-        Piercing = GetNode<OptionButton>("/root/GameManager/PauseMenu/Panel/VBoxContainer/DebugMenu/HBoxContainer/DebugPiercing").GetSelectedId();
+        Piercing = GetNode<OptionButton>("/root/GameManager/GUI/PauseMenu/Panel/VBoxContainer/DebugMenu/HBoxContainer/DebugPiercing").GetSelectedId();
     }
 
     public override void _PhysicsProcess(double delta)
