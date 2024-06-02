@@ -2,34 +2,31 @@ using Godot;
 
 public partial class GameManager : Node
 {
-	[Export]
-	private string StartLevelPath { get; set; }
-	private PackedScene levelScene;
 	private Node levelInstance;
+	private Node GUIInstance;
 	public override void _Ready()
 	{
-		if (StartLevelPath != null)
-		{
-			LoadLevel(StartLevelPath);
-		}
-		
-		//start game paused
-		GetTree().Paused = true;
+		CallDeferred(MethodName.LoadGUI);
+	}
+
+	public void LoadGUI(){
+		GD.Print("Loading GUI");
+		PackedScene GUIScene = GD.Load<PackedScene>("res://UI/GUI/GUI.tscn");
+		GUIInstance = GUIScene.Instantiate();
+		GetTree().Root.AddChild(GUIInstance);
+		GUIInstance.Name = "GUI";
+
 	}
 
 	public void LoadLevel(string path)
 	{	
-		if (levelInstance != null){
-			levelInstance.Name = "OldLevel";
-			levelInstance?.QueueFree();
-		}
+		levelInstance?.Free();
 
 		GD.Print("Loading level: " + path);
-		levelScene = GD.Load<PackedScene>(path);
+		PackedScene levelScene = GD.Load<PackedScene>(path);
 		levelInstance = levelScene.Instantiate();
-		AddChild(levelInstance);
+		GetTree().Root.AddChild(levelInstance);
 		levelInstance.Name = "Level";
-		
 		GetTree().Paused = true;
 	}
 
