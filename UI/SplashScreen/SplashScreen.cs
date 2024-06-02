@@ -7,6 +7,7 @@ public partial class SplashScreen : Node2D
 	public override void _Ready()
 	{
 		GetNode<GameManager>("/root/GameManager").CallDeferred("LoadLevel", "res://Levels/TestLevel3.tscn");
+		QueueFree();
 	}
 
 }
