@@ -29,7 +29,7 @@ public partial class PauseMenu : Control
 		}    
 	}
 	private void OnDebugPiercingSelected(long index){
-		GetNode<CharacterBody2D>("/root/Level/Paddle").SetIndexed("Piercing", GetNode<OptionButton>("Panel/VBoxContainer/DebugMenu/HBoxContainer/DebugPiercing").GetSelectedId());
+		GetNode<PlayerVariables>("/root/PlayerVariables").BallPiercingLevel = GetNode<OptionButton>("Panel/VBoxContainer/DebugMenu/HBoxContainer/DebugPiercing").GetSelectedId();
     }
 	private void OnDebugDebugTimeSelected(long index){
 		Engine.TimeScale = index*0.25;
