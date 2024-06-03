@@ -10,7 +10,7 @@ public partial class Level : Node2D
 			if (!GetTree().HasGroup("Blocks"))
 			{
 				if(NextLevelPath != null){
-					GetNode<GameManager>("/root/GameManager").CallDeferred("LoadLevel", NextLevelPath);
+					GetNode<GameManager>("/root/GameManager").LoadLevel(NextLevelPath);
 				}
 				else{
 					GetTree().Quit();

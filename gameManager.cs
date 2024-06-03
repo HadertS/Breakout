@@ -9,16 +9,20 @@ public partial class GameManager : Node
 		CallDeferred(MethodName.LoadGUI);
 	}
 
-	public void LoadGUI(){
+	private void LoadGUI(){
 		GD.Print("Loading GUI");
 		PackedScene GUIScene = GD.Load<PackedScene>("res://UI/GUI/GUI.tscn");
 		GUIInstance = GUIScene.Instantiate();
 		GetTree().Root.AddChild(GUIInstance);
 		GUIInstance.Name = "GUI";
-
 	}
 
 	public void LoadLevel(string path)
+	{	
+		CallDeferred(MethodName.LoadLevelDeferred, path);
+	}
+
+	private void LoadLevelDeferred(string path)
 	{	
 		levelInstance?.Free();
 
