@@ -11,6 +11,8 @@ public partial class PauseMenu : Control
 		GetNode<FileDialog>("Panel/VBoxContainer/DebugMenu/DebugLevelFileDialog").FileSelected += GetNode<GameManager>("/root/GameManager").LoadLevel;
 		GetNode<OptionButton>("Panel/VBoxContainer/DebugMenu/HBoxContainer/DebugPiercing").ItemSelected += OnDebugPiercingSelected;
 		GetNode<OptionButton>("Panel/VBoxContainer/DebugMenu/HBoxContainer2/DebugTime").ItemSelected += OnDebugDebugTimeSelected;
+		GetNode<OptionButton>("Panel/VBoxContainer/DebugMenu/HBoxContainer3/DebugPaddleSize").ItemSelected += OnDebugPaddleSize;
+
 	}
 
     public override void _Process(double delta){
@@ -29,8 +31,12 @@ public partial class PauseMenu : Control
 		}    
 	}
 	private void OnDebugPiercingSelected(long index){
-		GetNode<PlayerVariables>("/root/PlayerVariables").BallPiercingLevel = GetNode<OptionButton>("Panel/VBoxContainer/DebugMenu/HBoxContainer/DebugPiercing").GetSelectedId();
+		GetNode<PlayerVariables>("/root/PlayerVariables").BallPiercingLevel = (int)index;
     }
+	private void OnDebugPaddleSize(long index){
+		GetNode<PlayerVariables>("/root/PlayerVariables").PaddleSizeLevel = (float)((index*0.05)+1);
+    }
+
 	private void OnDebugDebugTimeSelected(long index){
 		Engine.TimeScale = index*0.25;
 	}
