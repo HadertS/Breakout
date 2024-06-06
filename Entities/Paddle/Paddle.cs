@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public partial class Paddle : CharacterBody2D
@@ -22,6 +23,8 @@ public partial class Paddle : CharacterBody2D
         AnimatedSprite.Play("default");
         PaddlSizeLevel = GetNode<PlayerVariables>("/root/PlayerVariables").PaddleSizeLevel;
         this.Scale = new Vector2(0.25f*GetNode<PlayerVariables>("/root/PlayerVariables").PaddleSizeLevel, 0.25f);
+        
+        GetNode<EnergyBar>("/root/GUI/EnergyBar").Connect("EnergyBarEmpty", new Godot.Callable(this, "OnEnergyBarEmpty"));        
     }
 
     public override void _PhysicsProcess(double delta)
@@ -31,19 +34,32 @@ public partial class Paddle : CharacterBody2D
             this.Scale = new Vector2(0.25f*GetNode<PlayerVariables>("/root/PlayerVariables").PaddleSizeLevel, 0.25f);
         }
 
-        if (Input.IsActionJustPressed("ui_select")){
+        if (Input.IsActionPressed("ui_select")){
             if (GetNode<PlayerVariables>("/root/PlayerVariables").PaddleStickyUnlocked)
             {
                 CurrentPaddlestate = PaddleState.Sticky;
+                if (GetNode<EnergyBar>("/root/GUI/EnergyBar").CurrentState != EnergyBar.State.EMPTY){
+                    GetNode<EnergyBar>("/root/GUI/EnergyBar").Drain(1);
+                    CurrentPaddlestate = PaddleState.Sticky;
+                }
             }
         }
-        else if (Input.IsActionJustReleased("ui_select")){
+        else if (Input.IsActionJustReleased("ui_select") && CurrentPaddlestate == PaddleState.Sticky){
+            GetNode<EnergyBar>("/root/GUI/EnergyBar").StopDrain();
             CurrentPaddlestate = PaddleState.Default;
+            GetNode<Ball>("/root/Level/Ball").CallDeferred("Launch");
         }
-        
 
         Vector2 inputDir = new(Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left"), 0);
         Velocity = inputDir * Speed;
         MoveAndCollide(Velocity * (float)delta);
+    }
+
+    public void OnEnergyBarEmpty()
+    {
+        if (CurrentPaddlestate == PaddleState.Sticky){
+            CurrentPaddlestate = PaddleState.Default;
+            GetNode<Ball>("/root/Level/Ball").CallDeferred("Launch");
+        }
     }
 }

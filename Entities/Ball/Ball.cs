@@ -39,6 +39,7 @@ public partial class Ball : CharacterBody2D
 				
 			}
 			else if (collisionInfo.GetCollider().GetType()==typeof(Block)){
+				//Piercing logic
 				if (true){
 					collisionInfo.GetCollider().Call("OnHit");
 					if (BallPiercing >= 1){
@@ -64,13 +65,6 @@ public partial class Ball : CharacterBody2D
 			ResetBall();
 		}
 
-		if (isStuckToPaddle){
-			if (Input.IsActionJustReleased("ui_select")){
-				isStuckToPaddle = false;
-				velocity = new Vector2(0,-1*speed);
-			}
-		}
-
 		previousPosition = Position;
 	}
 
@@ -78,5 +72,14 @@ public partial class Ball : CharacterBody2D
 	{
 		Position = startPosition;
 		velocity = new Vector2(0,1*speed);
+	}
+
+	public void Launch()
+	{
+		if (isStuckToPaddle){
+			GD.Print("Firing ball");
+			velocity = new Vector2(0,-1*speed);
+			isStuckToPaddle = false;
+		}
 	}
 }
