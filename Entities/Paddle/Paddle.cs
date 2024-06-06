@@ -39,7 +39,7 @@ public partial class Paddle : CharacterBody2D
             {
                 CurrentPaddlestate = PaddleState.Sticky;
                 if (GetNode<EnergyBar>("/root/GUI/EnergyBar").CurrentState != EnergyBar.State.EMPTY){
-                    GetNode<EnergyBar>("/root/GUI/EnergyBar").Drain(1);
+                    GetNode<EnergyBar>("/root/GUI/EnergyBar").Drain(10*delta);
                     CurrentPaddlestate = PaddleState.Sticky;
                 }
             }

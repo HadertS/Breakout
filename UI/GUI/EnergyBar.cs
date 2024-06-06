@@ -20,7 +20,7 @@ public partial class EnergyBar : ProgressBar
 		Value = GetNode<PlayerVariables>("/root/PlayerVariables").EnergyBar;
 	}
 
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 		// Set the energy bar's value to the player's EnergyBar value
 		Value = GetNode<PlayerVariables>("/root/PlayerVariables").EnergyBar;
@@ -28,7 +28,7 @@ public partial class EnergyBar : ProgressBar
 		if (CurrentState == State.EMPTY || CurrentState == State.IDLE)
 		{
 			// If the energy bar is empty or idle, refill it by 1 every tick
-			Refill(1);
+			Refill(5*delta);
 		}
 	}
 
