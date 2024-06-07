@@ -71,20 +71,20 @@ public partial class Ball : CharacterBody2D
 		
 		previousPosition = Position;
 		
-		if (Input.IsActionPressed("ui_select") && !isSlowed){
+		if (Input.IsActionPressed("ui_select")){
 			if (GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeUnlocked){
-				GD.Print("Slowed");
 
 				if (GetNode<EnergyBar>("/root/GUI/EnergyBar").CurrentState != EnergyBar.State.EMPTY){
-					isSlowed = true;
-					GetNode<EnergyBar>("/root/GUI/EnergyBar").Drain(10*delta);
-					TimeFactor = 0.5f;
-					velocity *= TimeFactor;
+					GetNode<EnergyBar>("/root/GUI/EnergyBar").Drain(50*delta);
+					if (!isSlowed){
+						TimeFactor = 0.5f;
+						velocity *= TimeFactor;
+						isSlowed = true;
+					}
 				}
 			}	
 		}
 		else if (Input.IsActionJustReleased("ui_select") && isSlowed){
-			GD.Print("Unslowed");
 
 			isSlowed = false;
 			GetNode<EnergyBar>("/root/GUI/EnergyBar").StopDrain();
