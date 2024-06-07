@@ -35,8 +35,7 @@ public partial class Paddle : CharacterBody2D
         }
 
         if (Input.IsActionPressed("ui_select")){
-            if (GetNode<PlayerVariables>("/root/PlayerVariables").PaddleStickyUnlocked)
-            {
+            if (GetNode<PlayerVariables>("/root/PlayerVariables").PaddleStickyUnlocked){
                 CurrentPaddlestate = PaddleState.Sticky;
                 if (GetNode<EnergyBar>("/root/GUI/EnergyBar").CurrentState != EnergyBar.State.EMPTY){
                     GetNode<EnergyBar>("/root/GUI/EnergyBar").Drain(10*delta);

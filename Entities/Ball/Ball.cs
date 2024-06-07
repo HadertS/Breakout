@@ -8,11 +8,14 @@ public partial class Ball : CharacterBody2D
 	private Vector2 startPosition;
 	private Vector2 previousPosition;
 	private bool isStuckToPaddle = false;
+	private bool isSlowed = false;
+	private float TimeFactor = 1;
 
     public override void _Ready()
     {
 		velocity = new Vector2(0,1*speed);
 		startPosition = Position;
+		GetNode<EnergyBar>("/root/GUI/EnergyBar").Connect("EnergyBarEmpty", new Godot.Callable(this, "OnEnergyBarEmpty"));
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -22,6 +25,7 @@ public partial class Ball : CharacterBody2D
 		}
 		else{
 			KinematicCollision2D collisionInfo = MoveAndCollide(velocity * (float)delta);
+
 			if (collisionInfo != null){
 			if (collisionInfo.GetCollider().GetType()==typeof(Paddle)){
 				BallPiercing = GetNode<PlayerVariables>("/root/PlayerVariables").BallPiercingLevel;
@@ -32,9 +36,9 @@ public partial class Ball : CharacterBody2D
 				}
 				else {
 					//forms a vector pointing from the paddle to the ball. The further out from the center of the paddle, the wider the ball will go.
-					Vector2 relativeVector = (GlobalPosition - (Vector2)collisionInfo.GetCollider().GetIndexed("global_position")).Normalized()*speed;
+					Vector2 relativeVector = (GlobalPosition - (Vector2)collisionInfo.GetCollider().GetIndexed("global_position")).Normalized()*speed*TimeFactor;
 					//mix of standard bounce collision and the relative vector. Adjust the mix to change bounce behaviour.
-					velocity = (velocity.Bounce(collisionInfo.GetNormal())/2+relativeVector/2).Normalized()*speed;
+					velocity = (velocity.Bounce(collisionInfo.GetNormal())/2+relativeVector/2).Normalized()*speed*TimeFactor;
 				}
 				
 			}
@@ -64,22 +68,52 @@ public partial class Ball : CharacterBody2D
 			//Ball is out of bounds
 			ResetBall();
 		}
-
+		
 		previousPosition = Position;
+		
+		if (Input.IsActionPressed("ui_select") && !isSlowed){
+			if (GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeUnlocked){
+				GD.Print("Slowed");
+
+				if (GetNode<EnergyBar>("/root/GUI/EnergyBar").CurrentState != EnergyBar.State.EMPTY){
+					isSlowed = true;
+					GetNode<EnergyBar>("/root/GUI/EnergyBar").Drain(10*delta);
+					TimeFactor = 0.5f;
+					velocity *= TimeFactor;
+				}
+			}	
+		}
+		else if (Input.IsActionJustReleased("ui_select") && isSlowed){
+			GD.Print("Unslowed");
+
+			isSlowed = false;
+			GetNode<EnergyBar>("/root/GUI/EnergyBar").StopDrain();
+			velocity /= TimeFactor;
+			TimeFactor = 1;
+		}
 	}
 
 	private void ResetBall()
 	{
 		Position = startPosition;
-		velocity = new Vector2(0,1*speed);
+		velocity = new Vector2(0,1)*speed*TimeFactor;
 	}
 
 	public void Launch()
 	{
 		if (isStuckToPaddle){
 			GD.Print("Firing ball");
-			velocity = new Vector2(0,-1*speed);
+			velocity = new Vector2(0,-1)*speed*TimeFactor;
 			isStuckToPaddle = false;
 		}
 	}
+
+	public void OnEnergyBarEmpty()
+    {
+        if (isSlowed){
+			velocity /= TimeFactor;
+			TimeFactor = 1;
+			isSlowed = false;
+        }
+    }
 }

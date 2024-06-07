@@ -9,5 +9,6 @@ public partial class PlayerVariables : Node
 	public int BallSizeLevel = 1;
 	public float PaddleSpeedLevel = 1;
 	public float PaddleSizeLevel = 1;
-	public bool PaddleStickyUnlocked = true;
+	public bool PaddleStickyUnlocked = false;
+	public bool SlowTimeUnlocked = true;
 }
