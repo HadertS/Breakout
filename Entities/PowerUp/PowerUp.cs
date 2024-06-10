@@ -9,7 +9,13 @@ public partial class PowerUp : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector2 velocity = new(0,Speed);
+		Vector2 velocity;
+		if (GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeActive){
+			velocity = new(0,Speed*GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeFactor);
+		}
+		else{
+			velocity = new(0,Speed);
+		}
 
 		var collisionInfo = MoveAndCollide(velocity * (float)delta);
 
