@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class StickyPaddle : Power
+public partial class StickyPaddle : ActivatablePower
 {
 	public override void _Ready()
 	{
@@ -9,20 +9,7 @@ public partial class StickyPaddle : Power
 		DescriptionText = "The ball will stick to the paddle while button is held. Release to launch upwards.";
 		EnergyCost = 10;
 		Threshold = 50;
-	}
-
-	public override void _PhysicsProcess(double delta)
-	{
-        base._PhysicsProcess(delta);
-        if (Input.IsActionPressed("ui_select") && !IsActive){
-            if (GetNode<EnergyBar>("/root/GUI/EnergyBar").CurrentState != EnergyBar.State.EMPTY){
-                ActivatePower();
-            }    
-        }
-        else if (Input.IsActionJustReleased("ui_select") && IsActive){
-            DeactivatePower();
-        }
-
+        KeySlot = "ui_select";
 	}
 
     public override void ActivatePower()
@@ -35,7 +22,6 @@ public partial class StickyPaddle : Power
     {
         base.DeactivatePower();
         if (GetNode<Paddle>("/root/Level/Paddle").CurrentPaddlestate == Paddle.PaddleState.Sticky){
-            GD.Print("Deactivating Sticky Paddle");
             GetNode<Paddle>("/root/Level/Paddle").CurrentPaddlestate = Paddle.PaddleState.Default;
             GetNode<Ball>("/root/Level/Ball").CallDeferred("Launch");
     

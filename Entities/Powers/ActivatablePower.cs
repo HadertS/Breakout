@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class Power : Node
+public partial class ActivatablePower : Node
 {
 	public string DescriptionName { get; set; }
 	public string DescriptionText { get; set; }
@@ -8,6 +8,8 @@ public partial class Power : Node
 	public float Threshold { get; set; }
 	//needs to be refactored out of EnergyBar.cs
 	public bool IsActive { get; set; }
+	public string KeySlot { get; set; }
+
 	public override void _Ready()
 	{
 		GetNode<EnergyBar>("/root/GUI/EnergyBar").Connect("EnergyBarEmpty", new Godot.Callable(this, "OnEnergyBarEmpty")); 
@@ -15,9 +17,18 @@ public partial class Power : Node
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (Input.IsActionPressed(KeySlot) && !IsActive){
+            if (GetNode<EnergyBar>("/root/GUI/EnergyBar").CurrentState != EnergyBar.State.EMPTY){
+                ActivatePower();
+            }    
+        }
+        else if (Input.IsActionJustReleased(KeySlot) && IsActive){
+            DeactivatePower();
+        }
+
 		if (IsActive){
 			GetNode<EnergyBar>("/root/GUI/EnergyBar").Drain(EnergyCost*delta);
-		}      
+		}
 	}
 	public virtual void ActivatePower()
 	{

@@ -100,7 +100,6 @@ public partial class Ball : CharacterBody2D
 	public void Launch()
 	{
 		if (isStuckToPaddle){
-			GD.Print("Firing ball");
 			velocity = new Vector2(0,-1)*speed*GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeFactor;
 			isStuckToPaddle = false;
 		}

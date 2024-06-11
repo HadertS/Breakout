@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class SlowTime : Power
+public partial class SlowTime : ActivatablePower
 {
 	public override void _Ready()
 	{
