@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://vh7klg3psoxn"]
+[gd_scene load_steps=7 format=3 uid="uid://vh7klg3psoxn"]
 
 [ext_resource type="Script" path="res://Levels/Level.cs" id="1_eu20q"]
 [ext_resource type="PackedScene" uid="uid://bicrc8g4mcctp" path="res://Entities/Paddle/Paddle.tscn" id="2_x63qy"]
 [ext_resource type="PackedScene" uid="uid://drk1lpjs8qik1" path="res://Entities/Ball/Ball.tscn" id="3_uw4x0"]
 [ext_resource type="PackedScene" uid="uid://o8j43gttkw8c" path="res://Entities/Block/Block.tscn" id="4_0xrfb"]
 [ext_resource type="PackedScene" uid="uid://dom5sicyllooj" path="res://Entities/Wall/Wall.tscn" id="5_dx5ph"]
+[ext_resource type="PackedScene" uid="uid://cnfyv1b1h4am0" path="res://Entities/Powers/StickyPaddle.tscn" id="6_r3mhx"]
 
 [node name="Level" type="Node2D"]
 process_mode = 1
@@ -41,3 +42,5 @@ scale = Vector2(1, 40)
 position = Vector2(574, 9)
 rotation = 1.5708
 scale = Vector2(1, 60)
+
+[node name="StickyPaddle" parent="." instance=ExtResource("6_r3mhx")]

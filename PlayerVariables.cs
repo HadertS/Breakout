@@ -21,13 +21,10 @@ public partial class PlayerVariables : Node
 	// PaddleSizeLevel is the level of size the paddle has. The higher the level, the larger the paddle is.
 
 
-	// Sticky paddle Powerup variables //
-	public bool PaddleStickyUnlocked = false;
-
 	// Slow time Powerup variables //
-	public bool SlowTimeUnlocked = true;
+	public bool SlowTimeUnlocked = false;
 	public bool SlowTimeActive = false;
 	// SlowTimeActive is a boolean that is true when the slow time powerup is active.
 	public float SlowTimeFactor = 1;
-
+	// SlowTimeFactor is the factor at which time is "slowed down". The higher the factor, the slower things will move.
 }
