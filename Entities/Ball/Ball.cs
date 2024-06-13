@@ -13,8 +13,10 @@ public partial class Ball : CharacterBody2D
     {
 		velocity = new Vector2(0,1*speed);
 		startPosition = Position;
-		GetNode<EnergyBar>("/root/GUI/EnergyBar").Connect("EnergyBarEmpty", new Godot.Callable(this, "OnEnergyBarEmpty"));
-    }
+		//This will need updating when powerups persist between levels
+		GetNode<SlowTime>("/root/Level/SlowTime").Connect("SlowTimeActivated", new Godot.Callable(this, "OnSlowTimeActivated")); 
+		GetNode<SlowTime>("/root/Level/SlowTime").Connect("SlowTimeDeactivated", new Godot.Callable(this, "OnSlowTimeDeactivated")); 
+	}
     public override void _PhysicsProcess(double delta)
     {
 		if (isStuckToPaddle){
@@ -26,7 +28,7 @@ public partial class Ball : CharacterBody2D
 
 			if (collisionInfo != null){
 			if (collisionInfo.GetCollider().GetType()==typeof(Paddle)){
-				BallPiercing = GetNode<PlayerVariables>("/root/PlayerVariables").BallPiercingLevel;
+				BallPiercing = GetNode<GlobalVariables>("/root/GlobalVariables").BallPiercingLevel;
 
 				if (GetNode<Paddle>("/root/Level/Paddle").CurrentPaddlestate == Paddle.PaddleState.Sticky){
 					velocity = new Vector2(0,0);
@@ -34,9 +36,9 @@ public partial class Ball : CharacterBody2D
 				}
 				else {
 					//forms a vector pointing from the paddle to the ball. The further out from the center of the paddle, the wider the ball will go.
-					Vector2 relativeVector = (GlobalPosition - (Vector2)collisionInfo.GetCollider().GetIndexed("global_position")).Normalized()*speed*GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeFactor;
+					Vector2 relativeVector = (GlobalPosition - (Vector2)collisionInfo.GetCollider().GetIndexed("global_position")).Normalized()*speed*GetNode<GlobalVariables>("/root/GlobalVariables").SlowTimeFactor;
 					//mix of standard bounce collision and the relative vector. Adjust the mix to change bounce behaviour.
-					velocity = (velocity.Bounce(collisionInfo.GetNormal())/2+relativeVector/2).Normalized()*speed*GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeFactor;
+					velocity = (velocity.Bounce(collisionInfo.GetNormal())/2+relativeVector/2).Normalized()*speed*GetNode<GlobalVariables>("/root/GlobalVariables").SlowTimeFactor;
 				}
 				
 			}
@@ -69,48 +71,27 @@ public partial class Ball : CharacterBody2D
 		
 		previousPosition = Position;
 		
-		if (Input.IsActionPressed("ui_select")){
-			if (GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeUnlocked){
-
-				if (GetNode<EnergyBar>("/root/GUI/EnergyBar").CurrentState != EnergyBar.State.EMPTY){
-					GetNode<EnergyBar>("/root/GUI/EnergyBar").Drain(50*delta);
-					if (!GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeActive){
-						GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeFactor = 0.5f;
-						velocity *= GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeFactor;
-						GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeActive = true;
-					}
-				}
-			}	
-		}
-		else if (Input.IsActionJustReleased("ui_select") && GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeActive){
-
-			GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeActive = false;
-			GetNode<EnergyBar>("/root/GUI/EnergyBar").StopDrain();
-			velocity /= GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeFactor;
-			GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeFactor = 1;
-		}
 	}
 
 	private void ResetBall()
 	{
 		Position = startPosition;
-		velocity = new Vector2(0,1)*speed*GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeFactor;
+		velocity = new Vector2(0,1)*speed*GetNode<GlobalVariables>("/root/GlobalVariables").SlowTimeFactor;
 	}
 
 	public void Launch()
 	{
 		if (isStuckToPaddle){
-			velocity = new Vector2(0,-1)*speed*GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeFactor;
+			velocity = new Vector2(0,-1)*speed*GetNode<GlobalVariables>("/root/GlobalVariables").SlowTimeFactor;
 			isStuckToPaddle = false;
 		}
 	}
 
-	public void OnEnergyBarEmpty()
-    {
-        if (GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeActive){
-			velocity /= GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeFactor;
-			GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeFactor = 1;
-			GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeActive = false;
-        }
+	public void OnSlowTimeActivated(){
+		velocity *= GetNode<GlobalVariables>("/root/GlobalVariables").SlowTimeFactor;
     }
+
+	public void OnSlowTimeDeactivated(){
+		velocity /= GetNode<GlobalVariables>("/root/GlobalVariables").SlowTimeFactor;
+	}
 }

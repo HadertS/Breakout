@@ -7,17 +7,11 @@ public partial class PowerUp : CharacterBody2D
 	[Export(PropertyHint.Enum, "PaddleSize, BallSize")]
 	public string PowerUpType { get; set; }
 
-	public override void _PhysicsProcess(double delta)
+    public override void _PhysicsProcess(double delta)
 	{
-		Vector2 velocity;
-		if (GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeActive){
-			velocity = new(0,Speed*GetNode<PlayerVariables>("/root/PlayerVariables").SlowTimeFactor);
-		}
-		else{
-			velocity = new(0,Speed);
-		}
+		Vector2 velocity = new(0,Speed*GetNode<GlobalVariables>("/root/GlobalVariables").SlowTimeFactor);
 
-		var collisionInfo = MoveAndCollide(velocity * (float)delta);
+		KinematicCollision2D collisionInfo = MoveAndCollide(velocity * (float)delta);
 
 		if (collisionInfo != null)
 		{
@@ -32,4 +26,6 @@ public partial class PowerUp : CharacterBody2D
 			QueueFree();
 		}
 	}
+
+
 }

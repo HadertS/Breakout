@@ -31,10 +31,10 @@ public partial class PauseMenu : Control
 		}    
 	}
 	private void OnDebugPiercingSelected(long index){
-		GetNode<PlayerVariables>("/root/PlayerVariables").BallPiercingLevel = (int)index;
+		GetNode<GlobalVariables>("/root/GlobalVariables").BallPiercingLevel = (int)index;
     }
 	private void OnDebugPaddleSize(long index){
-		GetNode<PlayerVariables>("/root/PlayerVariables").PaddleSizeLevel = (float)((index*0.05)+1);
+		GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel = (float)((index*0.05)+1);
     }
 
 	private void OnDebugDebugTimeSelected(long index){

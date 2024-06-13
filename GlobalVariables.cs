@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class PlayerVariables : Node
+public partial class GlobalVariables : Node
 {	
 	// Player variables //
 	public double EnergyBar = 100;
@@ -21,10 +21,8 @@ public partial class PlayerVariables : Node
 	// PaddleSizeLevel is the level of size the paddle has. The higher the level, the larger the paddle is.
 
 
-	// Slow time Powerup variables //
-	public bool SlowTimeUnlocked = false;
-	public bool SlowTimeActive = false;
-	// SlowTimeActive is a boolean that is true when the slow time powerup is active.
+	// Effect variables //	
 	public float SlowTimeFactor = 1;
+	public bool SlowTimeActive = false;
 	// SlowTimeFactor is the factor at which time is "slowed down". The higher the factor, the slower things will move.
 }

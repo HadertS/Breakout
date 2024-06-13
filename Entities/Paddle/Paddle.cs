@@ -21,20 +21,23 @@ public partial class Paddle : CharacterBody2D
         AnimatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         CollisionShape2D = GetNode<CollisionShape2D>("CollisionShape2D");
         AnimatedSprite.Play("default");
-        PaddlSizeLevel = GetNode<PlayerVariables>("/root/PlayerVariables").PaddleSizeLevel;
-        this.Scale = new Vector2(0.25f*GetNode<PlayerVariables>("/root/PlayerVariables").PaddleSizeLevel, 0.25f);
+        PaddlSizeLevel = GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel;
+        this.Scale = new Vector2(0.25f*GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel, 0.25f);
         
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        if (GetNode<PlayerVariables>("/root/PlayerVariables").PaddleSizeLevel != PaddlSizeLevel){
-            PaddlSizeLevel = GetNode<PlayerVariables>("/root/PlayerVariables").PaddleSizeLevel;
-            this.Scale = new Vector2(0.25f*GetNode<PlayerVariables>("/root/PlayerVariables").PaddleSizeLevel, 0.25f);
+        if (GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel != PaddlSizeLevel){
+            PaddlSizeLevel = GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel;
+            this.Scale = new Vector2(0.25f*GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel, 0.25f);
         }
 
         Vector2 inputDir = new(Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left"), 0);
         Velocity = inputDir * Speed;
         MoveAndCollide(Velocity * (float)delta);
     }
+
+
+
 }

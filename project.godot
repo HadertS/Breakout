@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://GameManager.cs"
-PlayerVariables="*res://PlayerVariables.cs"
+GlobalVariables="*res://GlobalVariables.cs"
 
 [display]
 

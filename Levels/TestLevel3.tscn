@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://drk1lpjs8qik1" path="res://Entities/Ball/Ball.tscn" id="3_uw4x0"]
 [ext_resource type="PackedScene" uid="uid://o8j43gttkw8c" path="res://Entities/Block/Block.tscn" id="4_0xrfb"]
 [ext_resource type="PackedScene" uid="uid://dom5sicyllooj" path="res://Entities/Wall/Wall.tscn" id="5_dx5ph"]
-[ext_resource type="PackedScene" uid="uid://cnfyv1b1h4am0" path="res://Entities/Powers/StickyPaddle.tscn" id="6_r3mhx"]
+[ext_resource type="PackedScene" uid="uid://c3rilk6i8fxv1" path="res://Entities/Powers/SlowTime.tscn" id="6_51goj"]
 
 [node name="Level" type="Node2D"]
 process_mode = 1
@@ -43,4 +43,5 @@ position = Vector2(574, 9)
 rotation = 1.5708
 scale = Vector2(1, 60)
 
-[node name="StickyPaddle" parent="." instance=ExtResource("6_r3mhx")]
+[node name="SlowTime" parent="." instance=ExtResource("6_51goj")]
+position = Vector2(-59, -4)

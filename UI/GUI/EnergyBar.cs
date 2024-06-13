@@ -19,12 +19,12 @@ public partial class EnergyBar : ProgressBar
 	{
 		Modulate = new Color(0, 1, 0);
 		// Set the energy bar's value to the player's EnergyBar value
-		Value = GetNode<PlayerVariables>("/root/PlayerVariables").EnergyBar;
-		if (GetNode<PlayerVariables>("/root/PlayerVariables").EnergyBar < GetNode<PlayerVariables>("/root/PlayerVariables").EnergyBarEmptyThrehold){
+		Value = GetNode<GlobalVariables>("/root/GlobalVariables").EnergyBar;
+		if (GetNode<GlobalVariables>("/root/GlobalVariables").EnergyBar < GetNode<GlobalVariables>("/root/GlobalVariables").EnergyBarEmptyThrehold){
 			CurrentState = State.EMPTY;
 			Modulate = new Color(1, 0, 0);
 		}
-		if (GetNode<PlayerVariables>("/root/PlayerVariables").EnergyBar == 100){
+		if (GetNode<GlobalVariables>("/root/GlobalVariables").EnergyBar == 100){
 			CurrentState = State.FULL;
 		}
 		else {
@@ -35,7 +35,7 @@ public partial class EnergyBar : ProgressBar
 	public override void _PhysicsProcess(double delta)
 	{
 		// Set the energy bar's value to the player's EnergyBar value
-		Value = GetNode<PlayerVariables>("/root/PlayerVariables").EnergyBar;
+		Value = GetNode<GlobalVariables>("/root/GlobalVariables").EnergyBar;
 
 		if (CurrentState == State.EMPTY || CurrentState == State.IDLE){
 			// If the energy bar is empty or idle, refill it by 1 every tick
@@ -48,12 +48,12 @@ public partial class EnergyBar : ProgressBar
 		//Drain the energy bar by the value passed in, capped at 0
 		if (CurrentState != State.EMPTY){
 			CurrentState = State.DRAINING;
-			GetNode<PlayerVariables>("/root/PlayerVariables").EnergyBar = GetNode<PlayerVariables>("/root/PlayerVariables").EnergyBar - value;
+			GetNode<GlobalVariables>("/root/GlobalVariables").EnergyBar = GetNode<GlobalVariables>("/root/GlobalVariables").EnergyBar - value;
 		}
-		if (GetNode<PlayerVariables>("/root/PlayerVariables").EnergyBar <= 0){
+		if (GetNode<GlobalVariables>("/root/GlobalVariables").EnergyBar <= 0){
 			CurrentState = State.EMPTY;
-			GetNode<PlayerVariables>("/root/PlayerVariables").EnergyBar = 0;
-			EmitSignal(nameof(EnergyBarEmpty));	
+			GetNode<GlobalVariables>("/root/GlobalVariables").EnergyBar = 0;
+			EmitSignal(SignalName.EnergyBarEmpty);	
 			Modulate = new Color(1, 0, 0);
 		}
 	}
@@ -70,18 +70,18 @@ public partial class EnergyBar : ProgressBar
 	{
 		//If not full refill the energy bar by the value passed in, capped at 100
 		//If the energy bar was empty, change state to idle if above EnergyBarEmptyThrehold, reactivating it
-		GetNode<PlayerVariables>("/root/PlayerVariables").EnergyBar = GetNode<PlayerVariables>("/root/PlayerVariables").EnergyBar + value;
+		GetNode<GlobalVariables>("/root/GlobalVariables").EnergyBar = GetNode<GlobalVariables>("/root/GlobalVariables").EnergyBar + value;
 
 		if (CurrentState == State.EMPTY){
-			if (GetNode<PlayerVariables>("/root/PlayerVariables").EnergyBar >= GetNode<PlayerVariables>("/root/PlayerVariables").EnergyBarEmptyThrehold){
+			if (GetNode<GlobalVariables>("/root/GlobalVariables").EnergyBar >= GetNode<GlobalVariables>("/root/GlobalVariables").EnergyBarEmptyThrehold){
 				CurrentState = State.IDLE;
 				Modulate = new Color(0, 1, 0);
 
 			}
 		}
-		if (GetNode<PlayerVariables>("/root/PlayerVariables").EnergyBar >= 100){
+		if (GetNode<GlobalVariables>("/root/GlobalVariables").EnergyBar >= 100){
 			CurrentState = State.FULL;
-			GetNode<PlayerVariables>("/root/PlayerVariables").EnergyBar = 100;
+			GetNode<GlobalVariables>("/root/GlobalVariables").EnergyBar = 100;
 		}
 	}
 
