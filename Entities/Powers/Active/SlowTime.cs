@@ -17,6 +17,10 @@ public partial class SlowTime : ActivatablePower
 		EnergyCost = 50;
 		Threshold = 50;
 		KeySlot = "ui_select";
+
+		Connect("SlowTimeActivated", new Godot.Callable(GetNode<Ball>("/root/Level/Ball"), "OnSlowTimeActivated")); 
+		Connect("SlowTimeDeactivated", new Godot.Callable(GetNode<Ball>("/root/Level/Ball"), "OnSlowTimeDeactivated")); 
+
 	}
 
     public override void ActivatePower()

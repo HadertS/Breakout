@@ -13,9 +13,6 @@ public partial class Ball : CharacterBody2D
     {
 		velocity = new Vector2(0,1*speed);
 		startPosition = Position;
-		//This will need updating when powerups persist between levels
-		GetNode<SlowTime>("/root/Level/SlowTime").Connect("SlowTimeActivated", new Godot.Callable(this, "OnSlowTimeActivated")); 
-		GetNode<SlowTime>("/root/Level/SlowTime").Connect("SlowTimeDeactivated", new Godot.Callable(this, "OnSlowTimeDeactivated")); 
 	}
     public override void _PhysicsProcess(double delta)
     {

@@ -1,9 +1,7 @@
 using Godot;
 
-public partial class ActivatablePower : Node
+public partial class ActivatablePower : Power
 {
-	public string DescriptionName { get; set; }
-	public string DescriptionText { get; set; }
 	public float EnergyCost { get; set; }
 	public float Threshold { get; set; }
 	//needs to be refactored out of EnergyBar.cs

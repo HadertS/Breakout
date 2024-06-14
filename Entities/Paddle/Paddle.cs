@@ -8,7 +8,6 @@ public partial class Paddle : CharacterBody2D
     
     private AnimatedSprite2D AnimatedSprite;
     private CollisionShape2D CollisionShape2D;
-    private float PaddlSizeLevel;
     public enum PaddleState
     {
         Default,
@@ -21,23 +20,23 @@ public partial class Paddle : CharacterBody2D
         AnimatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         CollisionShape2D = GetNode<CollisionShape2D>("CollisionShape2D");
         AnimatedSprite.Play("default");
-        PaddlSizeLevel = GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel;
         this.Scale = new Vector2(0.25f*GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel, 0.25f);
-        
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        if (GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel != PaddlSizeLevel){
-            PaddlSizeLevel = GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel;
-            this.Scale = new Vector2(0.25f*GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel, 0.25f);
-        }
-
         Vector2 inputDir = new(Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left"), 0);
         Velocity = inputDir * Speed;
         MoveAndCollide(Velocity * (float)delta);
     }
 
+    public void OnPaddleSizeIncrease()
+    {
+        this.Scale = new Vector2(0.25f*GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel, 0.25f);
+    }
 
-
+    public void OnPaddleSizeDecrease()
+    {
+        this.Scale = new Vector2(0.25f*GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel, 0.25f);
+    }
 }

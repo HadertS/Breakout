@@ -5,8 +5,8 @@ public partial class Block : Node2D
 {
 	[Export]
 	private int Hitpoints { get; set; } = 1;
-	[Export(PropertyHint.Enum, "None, PaddleSize, BallSize")]
-	public String PowerUpType { get; set; } = "None";
+	[Export(PropertyHint.Enum, "None,PaddleSizeIncrease,PaddleSizeDecrease")]
+	public string PowerUpType { get; set; } = "None";
 	AnimatedSprite2D animatedSprite2D;
 
 	// Called when the node enters the scene tree for the first time.
@@ -22,11 +22,22 @@ public partial class Block : Node2D
 		Hitpoints--;
 		if (Hitpoints <= 0){
 			if (PowerUpType != "None"){
-				PackedScene powerUpScene = GD.Load<PackedScene>("res://Entities/PowerUp/PowerUp.tscn");
-				PowerUp powerUpInstance = powerUpScene.Instantiate() as PowerUp;
-				GetParent().AddChild(powerUpInstance);
-				powerUpInstance.Position = Position;
-				powerUpInstance.PowerUpType = PowerUpType;
+				if (PowerUpType == "PaddleSizeIncrease"){
+					PackedScene powerUpScene = GD.Load<PackedScene>("res://Entities/PowerUp/PowerUpPaddleSize.tscn");
+					PowerUpPaddleSize powerUpInstance = powerUpScene.Instantiate() as PowerUpPaddleSize;
+					powerUpInstance.IsPaddleSizeIncrease = true;
+					GetParent().AddChild(powerUpInstance);
+					powerUpInstance.Position = Position;
+
+				}
+				else if (PowerUpType == "PaddleSizeDecrease"){
+
+					PackedScene powerUpScene = GD.Load<PackedScene>("res://Entities/PowerUp/PowerUpPaddleSize.tscn");
+					PowerUpPaddleSize powerUpInstance = powerUpScene.Instantiate() as PowerUpPaddleSize;
+					powerUpInstance.IsPaddleSizeIncrease = false;
+					GetParent().AddChild(powerUpInstance);
+					powerUpInstance.Position = Position;
+				}
 			}
 			
 			QueueFree();

@@ -4,8 +4,6 @@ public partial class PowerUp : CharacterBody2D
 {
 	[Export]
 	public int Speed = 300;
-	[Export(PropertyHint.Enum, "PaddleSize, BallSize")]
-	public string PowerUpType { get; set; }
 
     public override void _PhysicsProcess(double delta)
 	{
@@ -17,8 +15,7 @@ public partial class PowerUp : CharacterBody2D
 		{
 			if (collisionInfo.GetCollider().GetType()==typeof(Paddle))
 			{
-				//add powerup effect to paddle here
-
+				Collected();
 				QueueFree();
 			}
 		}
@@ -27,5 +24,8 @@ public partial class PowerUp : CharacterBody2D
 		}
 	}
 
+	public virtual void Collected()
+	{
+	}
 
 }
