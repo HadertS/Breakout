@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c3rilk6i8fxv1"]
 
-[ext_resource type="Script" path="res://Entities/Powers/SlowTime.cs" id="1_vy5fu"]
+[ext_resource type="Script" path="res://Entities/Powers/Active/SlowTime.cs" id="1_vy5fu"]
 
 [node name="SlowTime" type="Node2D"]
 script = ExtResource("1_vy5fu")

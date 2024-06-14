@@ -93,32 +93,6 @@ popup/item_2/id = 2
 popup/item_3/text = "3"
 popup/item_3/id = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/DebugMenu"]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="Panel/VBoxContainer/DebugMenu/HBoxContainer2"]
-layout_mode = 2
-text = "Time Scale"
-
-[node name="DebugTime" type="OptionButton" parent="Panel/VBoxContainer/DebugMenu/HBoxContainer2"]
-layout_mode = 2
-item_count = 6
-selected = 4
-popup/item_0/text = "x0"
-popup/item_0/id = 0
-popup/item_0/disabled = true
-popup/item_1/text = "x0.25"
-popup/item_1/id = 1
-popup/item_2/text = "x0.50"
-popup/item_2/id = 2
-popup/item_3/text = "x0.75"
-popup/item_3/id = 3
-popup/item_4/text = "x1"
-popup/item_4/id = 4
-popup/item_5/text = "x1.25"
-popup/item_5/id = 5
-
 [node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer/DebugMenu"]
 layout_mode = 2
 alignment = 1

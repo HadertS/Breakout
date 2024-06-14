@@ -10,7 +10,6 @@ public partial class PauseMenu : Control
 		GetNode<Button>("Panel/VBoxContainer/DebugMenu/DebugLevelDialogButton").Pressed += OnDebugLevelLoadPressed;
 		GetNode<FileDialog>("Panel/VBoxContainer/DebugMenu/DebugLevelFileDialog").FileSelected += GetNode<GameManager>("/root/GameManager").LoadLevel;
 		GetNode<OptionButton>("Panel/VBoxContainer/DebugMenu/HBoxContainer/DebugPiercing").ItemSelected += OnDebugPiercingSelected;
-		GetNode<OptionButton>("Panel/VBoxContainer/DebugMenu/HBoxContainer2/DebugTime").ItemSelected += OnDebugDebugTimeSelected;
 		GetNode<OptionButton>("Panel/VBoxContainer/DebugMenu/HBoxContainer3/DebugPaddleSize").ItemSelected += OnDebugPaddleSize;
 
 	}
@@ -37,9 +36,6 @@ public partial class PauseMenu : Control
 		GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel = (float)((index*0.05)+1);
     }
 
-	private void OnDebugDebugTimeSelected(long index){
-		Engine.TimeScale = index*0.25;
-	}
 	private void OnDebugLevelLoadPressed(){
 		GetNode<FileDialog>("Panel/VBoxContainer/DebugMenu/DebugLevelFileDialog").Show();
     }
