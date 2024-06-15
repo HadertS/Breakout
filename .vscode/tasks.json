@@ -5,13 +5,20 @@
     "tasks": [
         {
             "label": "build",
-            "group": "build",
+            "command": "dotnet",
             "type": "shell",
-            "command": "scons",
             "args": [
-              // enable for debugging with breakpoints
-              "dev_build=yes",
+                "build",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
             ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent"
+            },
             "problemMatcher": "$msCompile"
         }
     ]
