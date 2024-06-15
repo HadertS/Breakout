@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cuckphfjfvha5"]
 
-[ext_resource type="Script" path="res://Entities/PowerUp/PowerUpPaddleSize.cs" id="1_kyhbu"]
+[ext_resource type="Script" path="res://Entities/PowerUp/PowerUpPaddleSize/PowerUpPaddleSize.cs" id="1_kyhbu"]
 [ext_resource type="Texture2D" uid="uid://m1laili5w1hn" path="res://Art/Breakout Tile Set Free/PNG/59-Breakout-Tiles.png" id="2_r1ry5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ql8a"]

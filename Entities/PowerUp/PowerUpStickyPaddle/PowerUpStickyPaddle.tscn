@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dca45jiw3pupe"]
+
+[ext_resource type="Script" path="res://Entities/PowerUp/PowerUpStickyPaddle/PowerUpStickyPaddle.cs" id="1_c0416"]
+[ext_resource type="Texture2D" uid="uid://m1laili5w1hn" path="res://Art/Breakout Tile Set Free/PNG/59-Breakout-Tiles.png" id="2_rcou3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ql8a"]
+size = Vector2(64, 64)
+
+[node name="PowerUp" type="CharacterBody2D"]
+collision_layer = 16
+script = ExtResource("1_c0416")
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 2.08165e-12)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_rcou3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.08165e-12)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_1ql8a")
