@@ -8,5 +8,4 @@ public partial class PowerUpSlowTime : PowerUp
         Node PowerInstance = PowerScene.Instantiate();
         GetTree().Root.AddChild(PowerInstance);
     }
-
 }

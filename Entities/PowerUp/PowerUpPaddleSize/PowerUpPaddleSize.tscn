@@ -1,7 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuckphfjfvha5"]
+[gd_scene load_steps=5 format=3 uid="uid://cuckphfjfvha5"]
 
 [ext_resource type="Script" path="res://Entities/PowerUp/PowerUpPaddleSize/PowerUpPaddleSize.cs" id="1_kyhbu"]
 [ext_resource type="Texture2D" uid="uid://m1laili5w1hn" path="res://Art/Breakout Tile Set Free/PNG/59-Breakout-Tiles.png" id="2_r1ry5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rsi35"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r1ry5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ql8a"]
 size = Vector2(64, 64)
@@ -10,10 +21,10 @@ size = Vector2(64, 64)
 collision_layer = 16
 script = ExtResource("1_kyhbu")
 
-[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2.08165e-12)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_r1ry5")
+sprite_frames = SubResource("SpriteFrames_rsi35")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.08165e-12)

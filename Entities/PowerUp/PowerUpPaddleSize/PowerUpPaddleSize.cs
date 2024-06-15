@@ -2,52 +2,58 @@ using Godot;
 
 public partial class PowerUpPaddleSize : PowerUp
 {
+    [Signal]
+    public delegate void PaddleSizeIncreaseEventHandler();
 
-	[Signal]
-	public delegate void PaddleSizeIncreaseEventHandler();
-	[Signal]
-	public delegate void PaddleSizeDecreaseEventHandler();
-	[Export]
-	public bool IsPaddleSizeIncrease { get; set; } = true;
+    [Signal]
+    public delegate void PaddleSizeDecreaseEventHandler();
 
-	public override void _Ready()
-	{
-		base._Ready();
-		Connect("PaddleSizeIncrease", new Godot.Callable(GetNode<Paddle>("/root/Level/Paddle"), "OnPaddleSizeIncrease"));
-		Connect("PaddleSizeDecrease", new Godot.Callable(GetNode<Paddle>("/root/Level/Paddle"), "OnPaddleSizeDecrease"));
+    [Export]
+    public bool IsPaddleSizeIncrease { get; set; } = true;
 
-		if (IsPaddleSizeIncrease)
-		{
-			Sprite.Modulate = Colors.Green;
-		}
-		else
-		{
-			Sprite.Modulate = Colors.Red;
-		}
-	}
+    public override void _Ready()
+    {
+        base._Ready();
+        Connect(
+            "PaddleSizeIncrease",
+            new Godot.Callable(GetNode<Paddle>("/root/Level/Paddle"), "OnPaddleSizeIncrease")
+        );
+        Connect(
+            "PaddleSizeDecrease",
+            new Godot.Callable(GetNode<Paddle>("/root/Level/Paddle"), "OnPaddleSizeDecrease")
+        );
 
-	public override void Collected()
-	{
-		if (IsPaddleSizeIncrease)
-		{
-			IncreasePaddleSize();
-		}
-		else
-		{
-			DecreasePaddleSize();
-		}
-	}
+        if (IsPaddleSizeIncrease)
+        {
+            Sprite.Modulate = Colors.Green;
+        }
+        else
+        {
+            Sprite.Modulate = Colors.Red;
+        }
+    }
 
-	public void IncreasePaddleSize()
-	{
-		GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel += 0.1f;
-		EmitSignal(SignalName.PaddleSizeIncrease);
-	}
+    public override void Collected()
+    {
+        if (IsPaddleSizeIncrease)
+        {
+            IncreasePaddleSize();
+        }
+        else
+        {
+            DecreasePaddleSize();
+        }
+    }
 
-	public void DecreasePaddleSize()
-	{
-		GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel -= 0.1f;
-		EmitSignal(SignalName.PaddleSizeDecrease);
-	}
+    public void IncreasePaddleSize()
+    {
+        GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel += 0.1f;
+        EmitSignal(SignalName.PaddleSizeIncrease);
+    }
 
+    public void DecreasePaddleSize()
+    {
+        GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel -= 0.1f;
+        EmitSignal(SignalName.PaddleSizeDecrease);
+    }
 }
