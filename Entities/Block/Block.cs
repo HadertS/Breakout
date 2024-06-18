@@ -6,7 +6,10 @@ public partial class Block : Node2D
     [Export]
     private int Hitpoints { get; set; } = 1;
 
-    [Export(PropertyHint.Enum, "None,PaddleSizeIncrease,PaddleSizeDecrease,StickyPaddle,SlowTime")]
+    [Export(
+        PropertyHint.Enum,
+        "None,PaddleSizeIncrease,PaddleSizeDecrease,StickyPaddle,SlowTime,BallPiercing"
+    )]
     public string PowerUpType { get; set; } = "None";
     AnimatedSprite2D animatedSprite2D;
 
@@ -64,6 +67,16 @@ public partial class Block : Node2D
                         "res://Entities/PowerUp/PowerUpSlowTime/PowerUpSlowTime.tscn"
                     );
                     PowerUpSlowTime powerUpInstance = powerUpScene.Instantiate() as PowerUpSlowTime;
+                    GetParent().AddChild(powerUpInstance);
+                    powerUpInstance.Position = Position;
+                }
+                else if (PowerUpType == "BallPiercing")
+                {
+                    PackedScene powerUpScene = GD.Load<PackedScene>(
+                        "res://Entities/PowerUp/PowerUpBallPiercing/PowerUpBallPiercing.tscn"
+                    );
+                    PowerUpBallPiercing powerUpInstance =
+                        powerUpScene.Instantiate() as PowerUpBallPiercing;
                     GetParent().AddChild(powerUpInstance);
                     powerUpInstance.Position = Position;
                 }
