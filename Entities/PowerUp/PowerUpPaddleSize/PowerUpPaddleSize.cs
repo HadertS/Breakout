@@ -9,7 +9,7 @@ public partial class PowerUpPaddleSize : PowerUp
     public delegate void PaddleSizeDecreaseEventHandler();
 
     [Export]
-    public bool IsPaddleSizeIncrease { get; set; } = true;
+    public bool IsIncrease { get; set; } = true;
 
     public override void _Ready()
     {
@@ -23,7 +23,7 @@ public partial class PowerUpPaddleSize : PowerUp
             new Godot.Callable(GetNode<Paddle>("/root/Level/Paddle"), "OnPaddleSizeDecrease")
         );
 
-        if (IsPaddleSizeIncrease)
+        if (IsIncrease)
         {
             Sprite.Modulate = Colors.Green;
         }
@@ -35,7 +35,7 @@ public partial class PowerUpPaddleSize : PowerUp
 
     public override void Collected()
     {
-        if (IsPaddleSizeIncrease)
+        if (IsIncrease)
         {
             IncreasePaddleSize();
         }
@@ -47,13 +47,13 @@ public partial class PowerUpPaddleSize : PowerUp
 
     public void IncreasePaddleSize()
     {
-        GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel += 0.1f;
+        GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSpeedLevel += 0.1f;
         EmitSignal(SignalName.PaddleSizeIncrease);
     }
 
     public void DecreasePaddleSize()
     {
-        GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel -= 0.1f;
+        GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSpeedLevel -= 0.1f;
         EmitSignal(SignalName.PaddleSizeDecrease);
     }
 }

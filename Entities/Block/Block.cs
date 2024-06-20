@@ -8,7 +8,7 @@ public partial class Block : Node2D
 
     [Export(
         PropertyHint.Enum,
-        "None,PaddleSizeIncrease,PaddleSizeDecrease,StickyPaddle,SlowTime,BallPiercing"
+        "None,PaddleSizeIncrease,PaddleSizeDecrease,StickyPaddle,SlowTime,BallPiercing,PaddleSpeedIncrease,PaddleSpeedDecrease"
     )]
     public string PowerUpType { get; set; } = "None";
     AnimatedSprite2D animatedSprite2D;
@@ -36,7 +36,7 @@ public partial class Block : Node2D
                     );
                     PowerUpPaddleSize powerUpInstance =
                         powerUpScene.Instantiate() as PowerUpPaddleSize;
-                    powerUpInstance.IsPaddleSizeIncrease = true;
+                    powerUpInstance.IsIncrease = true;
                     GetParent().AddChild(powerUpInstance);
                     powerUpInstance.Position = Position;
                 }
@@ -47,7 +47,7 @@ public partial class Block : Node2D
                     );
                     PowerUpPaddleSize powerUpInstance =
                         powerUpScene.Instantiate() as PowerUpPaddleSize;
-                    powerUpInstance.IsPaddleSizeIncrease = false;
+                    powerUpInstance.IsIncrease = false;
                     GetParent().AddChild(powerUpInstance);
                     powerUpInstance.Position = Position;
                 }
@@ -77,6 +77,28 @@ public partial class Block : Node2D
                     );
                     PowerUpBallPiercing powerUpInstance =
                         powerUpScene.Instantiate() as PowerUpBallPiercing;
+                    GetParent().AddChild(powerUpInstance);
+                    powerUpInstance.Position = Position;
+                }
+                else if (PowerUpType == "PaddleSpeedIncrease")
+                {
+                    PackedScene powerUpScene = GD.Load<PackedScene>(
+                        "res://Entities/PowerUp/PowerUpPaddleSpeed/PowerUpPaddleSpeed.tscn"
+                    );
+                    PowerUpPaddleSpeed powerUpInstance =
+                        powerUpScene.Instantiate() as PowerUpPaddleSpeed;
+                    powerUpInstance.IsIncrease = true;
+                    GetParent().AddChild(powerUpInstance);
+                    powerUpInstance.Position = Position;
+                }
+                else if (PowerUpType == "PaddleSpeedDecrease")
+                {
+                    PackedScene powerUpScene = GD.Load<PackedScene>(
+                        "res://Entities/PowerUp/PowerUpPaddleSpeed/PowerUpPaddleSpeed.tscn"
+                    );
+                    PowerUpPaddleSpeed powerUpInstance =
+                        powerUpScene.Instantiate() as PowerUpPaddleSpeed;
+                    powerUpInstance.IsIncrease = false;
                     GetParent().AddChild(powerUpInstance);
                     powerUpInstance.Position = Position;
                 }

@@ -32,7 +32,7 @@ public partial class Paddle : CharacterBody2D
     {
         Vector2 inputDir =
             new(Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left"), 0);
-        Velocity = inputDir * Speed;
+        Velocity = inputDir * Speed * GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSpeedLevel;
         MoveAndCollide(Velocity * (float)delta);
     }
 
