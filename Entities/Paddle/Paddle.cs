@@ -33,7 +33,16 @@ public partial class Paddle : CharacterBody2D
         Vector2 inputDir =
             new(Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left"), 0);
         Velocity = inputDir * Speed * GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSpeedLevel;
-        MoveAndCollide(Velocity * (float)delta);
+        KinematicCollision2D collisionInfo = MoveAndCollide(Velocity * (float)delta);
+
+        if (collisionInfo != null)
+        {
+            if (collisionInfo.GetCollider().HasMethod("Collected"))
+            {
+                PowerUp powerUp = (PowerUp)collisionInfo.GetCollider();
+                powerUp.Collected();
+            }
+        }
     }
 
     public void OnPaddleSizeIncrease()

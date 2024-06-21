@@ -24,7 +24,6 @@ public partial class PowerUp : CharacterBody2D
             if (collisionInfo.GetCollider().GetType() == typeof(Paddle))
             {
                 Collected();
-                QueueFree();
             }
         }
         if (Position.Y > GetViewportRect().Size.Y)
@@ -33,5 +32,7 @@ public partial class PowerUp : CharacterBody2D
         }
     }
 
-    public virtual void Collected() { }
+    public virtual void Collected() {
+        QueueFree();
+    }
 }

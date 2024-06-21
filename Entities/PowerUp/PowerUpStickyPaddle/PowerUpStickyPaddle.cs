@@ -9,5 +9,6 @@ public partial class PowerUpStickyPaddle : PowerUp
         );
         Node PowerInstance = PowerScene.Instantiate();
         GetTree().Root.AddChild(PowerInstance);
+        base.Collected();
     }
 }

@@ -29,6 +29,7 @@ public partial class PowerUpPaddleSpeed : PowerUp
         {
             DecreasePaddleSpeed();
         }
+        base.Collected();
     }
 
     public void IncreasePaddleSpeed()

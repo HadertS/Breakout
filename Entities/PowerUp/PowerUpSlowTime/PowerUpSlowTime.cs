@@ -7,5 +7,6 @@ public partial class PowerUpSlowTime : PowerUp
         PackedScene PowerScene = GD.Load<PackedScene>("res://Entities/Powers/Active/SlowTime.tscn");
         Node PowerInstance = PowerScene.Instantiate();
         GetTree().Root.AddChild(PowerInstance);
+        base.Collected();
     }
 }

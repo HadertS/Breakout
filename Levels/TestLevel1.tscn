@@ -16,158 +16,158 @@ NextLevelPath = "res://Levels/TestLevel2.tscn"
 position = Vector2(517, 612)
 
 [node name="Ball" parent="." instance=ExtResource("3_d0gae")]
-position = Vector2(517, 380)
+position = Vector2(518, 380)
 
 [node name="Blocks" type="Node" parent="."]
 
 [node name="Row1" type="Node" parent="Blocks"]
 
 [node name="Block" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
-position = Vector2(95, 329)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(96, 329)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block2" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
-position = Vector2(191, 329)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(192, 329)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block3" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
-position = Vector2(287, 329)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(288, 329)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block4" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
-position = Vector2(383, 329)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(384, 329)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block5" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
-position = Vector2(479, 329)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(480, 329)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block6" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
-position = Vector2(575, 329)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(576, 329)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block7" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
-position = Vector2(671, 329)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(672, 329)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block8" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
-position = Vector2(767, 329)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(768, 329)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block9" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
-position = Vector2(863, 329)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(864, 329)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block10" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
-position = Vector2(959, 329)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(960, 329)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block11" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
-position = Vector2(1055, 329)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(1056, 329)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Row2" type="Node" parent="Blocks"]
 
 [node name="Block" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
-position = Vector2(95, 297)
+position = Vector2(96, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSpeedDecrease"
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block2" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
-position = Vector2(191, 297)
+position = Vector2(192, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSpeedDecrease"
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block3" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
-position = Vector2(287, 297)
+position = Vector2(288, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSpeedDecrease"
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block4" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
-position = Vector2(383, 297)
+position = Vector2(384, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSpeedDecrease"
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block5" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
-position = Vector2(479, 297)
+position = Vector2(480, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSpeedDecrease"
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block6" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
-position = Vector2(575, 297)
+position = Vector2(576, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSpeedDecrease"
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block7" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
-position = Vector2(671, 297)
+position = Vector2(672, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSpeedDecrease"
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block8" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
-position = Vector2(767, 297)
+position = Vector2(768, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSpeedDecrease"
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block9" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
-position = Vector2(863, 297)
+position = Vector2(864, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSpeedDecrease"
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block10" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
-position = Vector2(959, 297)
+position = Vector2(960, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSpeedDecrease"
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block11" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
-position = Vector2(1055, 297)
+position = Vector2(1056, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSpeedDecrease"
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Row3" type="Node" parent="Blocks"]
 
 [node name="Block" parent="Blocks/Row3" instance=ExtResource("4_i6t4h")]
-position = Vector2(95, 265)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(96, 265)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block2" parent="Blocks/Row3" instance=ExtResource("4_i6t4h")]
-position = Vector2(191, 265)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(192, 265)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block3" parent="Blocks/Row3" instance=ExtResource("4_i6t4h")]
-position = Vector2(287, 265)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(288, 265)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block4" parent="Blocks/Row3" instance=ExtResource("4_i6t4h")]
-position = Vector2(383, 265)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(384, 265)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block5" parent="Blocks/Row3" instance=ExtResource("4_i6t4h")]
-position = Vector2(479, 265)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(480, 265)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block6" parent="Blocks/Row3" instance=ExtResource("4_i6t4h")]
-position = Vector2(575, 265)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(576, 265)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block7" parent="Blocks/Row3" instance=ExtResource("4_i6t4h")]
-position = Vector2(671, 265)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(672, 265)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block8" parent="Blocks/Row3" instance=ExtResource("4_i6t4h")]
-position = Vector2(767, 265)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(768, 265)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block9" parent="Blocks/Row3" instance=ExtResource("4_i6t4h")]
-position = Vector2(863, 265)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(864, 265)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block10" parent="Blocks/Row3" instance=ExtResource("4_i6t4h")]
-position = Vector2(959, 265)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(960, 265)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Block11" parent="Blocks/Row3" instance=ExtResource("4_i6t4h")]
-position = Vector2(1055, 265)
-PowerUpType = "PaddleSpeedIncrease"
+position = Vector2(1056, 265)
+PowerUpType = "PaddleSizeIncrease"
 
 [node name="Walls" type="Node" parent="."]
 
@@ -176,7 +176,7 @@ position = Vector2(10, 300)
 scale = Vector2(1, 40)
 
 [node name="WallRight" parent="Walls" instance=ExtResource("5_0qyt6")]
-position = Vector2(1140, 300)
+position = Vector2(1141, 300)
 scale = Vector2(1, 40)
 
 [node name="WallTop" parent="Walls" instance=ExtResource("5_0qyt6")]

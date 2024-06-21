@@ -43,17 +43,18 @@ public partial class PowerUpPaddleSize : PowerUp
         {
             DecreasePaddleSize();
         }
+        base.Collected();
     }
 
     public void IncreasePaddleSize()
     {
-        GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSpeedLevel += 0.1f;
+        GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel += 0.1f;
         EmitSignal(SignalName.PaddleSizeIncrease);
     }
 
     public void DecreasePaddleSize()
     {
-        GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSpeedLevel -= 0.1f;
+        GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSizeLevel -= 0.1f;
         EmitSignal(SignalName.PaddleSizeDecrease);
     }
 }
