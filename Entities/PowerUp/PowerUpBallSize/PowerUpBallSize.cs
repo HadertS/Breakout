@@ -14,14 +14,6 @@ public partial class PowerUpBallSize : PowerUp
     public override void _Ready()
     {
         base._Ready();
-        Connect(
-            "BallSizeIncrease",
-            new Godot.Callable(GetNode<Ball>("/root/Level/Ball"), "OnBallSizeIncrease")
-        );
-        Connect(
-            "BallSizeDecrease",
-            new Godot.Callable(GetNode<Ball>("/root/Level/Ball"), "OnBallSizeDecrease")
-        );
 
         if (IsIncrease)
         {
@@ -49,14 +41,12 @@ public partial class PowerUpBallSize : PowerUp
     public void IncreaseBallSize()
     {
         GetNode<GlobalVariables>("/root/GlobalVariables").BallSizeLevel += 0.1f;
-        EmitSignal(SignalName.BallSizeDecrease);
-
+        GetTree().CallGroup("Balls", "OnBallSizeIncrease");
     }
 
     public void DecreaseBallSize()
     {
         GetNode<GlobalVariables>("/root/GlobalVariables").BallSizeLevel -= 0.1f;
-        EmitSignal(SignalName.BallSizeDecrease);
-
+        GetTree().CallGroup("Balls", "OnBallSizeDecrease");
     }
 }
