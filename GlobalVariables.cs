@@ -17,10 +17,10 @@ public partial class GlobalVariables : Node
     public int BallPiercingLevel = 0;
 
     // BallSpeedLevel is the level of speed the ball has. The higher the level, the faster the ball moves. Not currently implimented.
-    public int BallSpeedLevel = 1;
+    public float BallSpeedLevel = 1;
 
     // BallSizeLevel is the level of size the ball has. The higher the level, the larger the ball is. Not currently implimented
-    public int BallSizeLevel = 1;
+    public float BallSizeLevel = 1;
 
     // PaddleSpeedLevel is the level of speed the paddle has. The higher the level, the faster the paddle moves. Not currently implimented
     public float PaddleSpeedLevel = 1;

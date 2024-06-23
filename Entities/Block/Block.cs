@@ -8,7 +8,7 @@ public partial class Block : Node2D
 
     [Export(
         PropertyHint.Enum,
-        "None,PaddleSizeIncrease,PaddleSizeDecrease,StickyPaddle,SlowTime,BallPiercing,PaddleSpeedIncrease,PaddleSpeedDecrease"
+        "None,PaddleSizeIncrease,PaddleSizeDecrease,StickyPaddle,SlowTime,BallPiercing,PaddleSpeedIncrease,PaddleSpeedDecrease,BallSizeIncrease,BallSizeDecrease"
     )]
     public string PowerUpType { get; set; } = "None";
     AnimatedSprite2D animatedSprite2D;
@@ -98,6 +98,26 @@ public partial class Block : Node2D
                     );
                     PowerUpPaddleSpeed powerUpInstance =
                         powerUpScene.Instantiate() as PowerUpPaddleSpeed;
+                    powerUpInstance.IsIncrease = false;
+                    GetParent().AddChild(powerUpInstance);
+                    powerUpInstance.Position = Position;
+                }
+                else if (PowerUpType == "BallSizeIncrease")
+                {
+                    PackedScene powerUpScene = GD.Load<PackedScene>(
+                        "res://Entities/PowerUp/PowerUpBallSize/PowerUpBallSize.tscn"
+                    );
+                    PowerUpBallSize powerUpInstance = powerUpScene.Instantiate() as PowerUpBallSize;
+                    powerUpInstance.IsIncrease = true;
+                    GetParent().AddChild(powerUpInstance);
+                    powerUpInstance.Position = Position;
+                }
+                else if (PowerUpType == "BallSizeDecrease")
+                {
+                    PackedScene powerUpScene = GD.Load<PackedScene>(
+                        "res://Entities/PowerUp/PowerUpBallSize/PowerUpBallSize.tscn"
+                    );
+                    PowerUpBallSize powerUpInstance = powerUpScene.Instantiate() as PowerUpBallSize;
                     powerUpInstance.IsIncrease = false;
                     GetParent().AddChild(powerUpInstance);
                     powerUpInstance.Position = Position;

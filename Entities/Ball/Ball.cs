@@ -13,6 +13,10 @@ public partial class Ball : CharacterBody2D
     {
         velocity = new Vector2(0, 1 * speed);
         startPosition = Position;
+        this.Scale = new Vector2(
+            0.1f * GetNode<GlobalVariables>("/root/GlobalVariables").BallSizeLevel,
+            0.1f * GetNode<GlobalVariables>("/root/GlobalVariables").BallSizeLevel
+        );
     }
 
     public override void _PhysicsProcess(double delta)
@@ -127,5 +131,21 @@ public partial class Ball : CharacterBody2D
     public void OnSlowTimeDeactivated()
     {
         velocity /= GetNode<GlobalVariables>("/root/GlobalVariables").SlowTimeFactor;
+    }
+
+    public void OnBallSizeIncrease()
+    {
+        this.Scale = new Vector2(
+            0.1f * GetNode<GlobalVariables>("/root/GlobalVariables").BallSizeLevel,
+            0.1f * GetNode<GlobalVariables>("/root/GlobalVariables").BallSizeLevel
+        );
+    }
+
+    public void OnBallSizeDecrease()
+    {
+        this.Scale = new Vector2(
+            0.1f * GetNode<GlobalVariables>("/root/GlobalVariables").BallSizeLevel,
+            0.1f * GetNode<GlobalVariables>("/root/GlobalVariables").BallSizeLevel
+        );
     }
 }

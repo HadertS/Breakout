@@ -24,104 +24,104 @@ position = Vector2(518, 380)
 
 [node name="Block" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
 position = Vector2(96, 329)
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeIncrease"
 
 [node name="Block2" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
 position = Vector2(192, 329)
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeIncrease"
 
 [node name="Block3" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
 position = Vector2(288, 329)
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeIncrease"
 
 [node name="Block4" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
 position = Vector2(384, 329)
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeIncrease"
 
 [node name="Block5" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
 position = Vector2(480, 329)
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeIncrease"
 
 [node name="Block6" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
 position = Vector2(576, 329)
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeIncrease"
 
 [node name="Block7" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
 position = Vector2(672, 329)
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeIncrease"
 
 [node name="Block8" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
 position = Vector2(768, 329)
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeIncrease"
 
 [node name="Block9" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
 position = Vector2(864, 329)
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeIncrease"
 
 [node name="Block10" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
 position = Vector2(960, 329)
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeIncrease"
 
 [node name="Block11" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
 position = Vector2(1056, 329)
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeIncrease"
 
 [node name="Row2" type="Node" parent="Blocks"]
 
 [node name="Block" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
 position = Vector2(96, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeDecrease"
 
 [node name="Block2" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
 position = Vector2(192, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeDecrease"
 
 [node name="Block3" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
 position = Vector2(288, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeDecrease"
 
 [node name="Block4" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
 position = Vector2(384, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeDecrease"
 
 [node name="Block5" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
 position = Vector2(480, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeDecrease"
 
 [node name="Block6" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
 position = Vector2(576, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeDecrease"
 
 [node name="Block7" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
 position = Vector2(672, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeDecrease"
 
 [node name="Block8" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
 position = Vector2(768, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeDecrease"
 
 [node name="Block9" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
 position = Vector2(864, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeDecrease"
 
 [node name="Block10" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
 position = Vector2(960, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeDecrease"
 
 [node name="Block11" parent="Blocks/Row2" instance=ExtResource("4_i6t4h")]
 position = Vector2(1056, 297)
 Hitpoints = 2
-PowerUpType = "PaddleSizeIncrease"
+PowerUpType = "BallSizeDecrease"
 
 [node name="Row3" type="Node" parent="Blocks"]
 
