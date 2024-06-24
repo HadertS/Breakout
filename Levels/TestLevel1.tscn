@@ -44,7 +44,7 @@ PowerUpType = "BallSizeIncrease"
 
 [node name="Block6" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
 position = Vector2(576, 329)
-PowerUpType = "BallSizeIncrease"
+PowerUpType = "StickyPaddle"
 
 [node name="Block7" parent="Blocks/Row1" instance=ExtResource("4_i6t4h")]
 position = Vector2(672, 329)

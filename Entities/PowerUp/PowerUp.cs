@@ -5,11 +5,11 @@ public partial class PowerUp : CharacterBody2D
 {
     [Export]
     public int Speed = 300;
-    public virtual AnimatedSprite2D Sprite { get; set; }
+    public virtual Sprite2D Sprite { get; set; }
 
     public override void _Ready()
     {
-        Sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        Sprite = GetNode<Sprite2D>("Sprite2D");
     }
 
     public override void _PhysicsProcess(double delta)
@@ -32,7 +32,8 @@ public partial class PowerUp : CharacterBody2D
         }
     }
 
-    public virtual void Collected() {
+    public virtual void Collected()
+    {
         QueueFree();
     }
 }

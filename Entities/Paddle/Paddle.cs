@@ -37,7 +37,12 @@ public partial class Paddle : CharacterBody2D
 
         if (collisionInfo != null)
         {
-            if (collisionInfo.GetCollider().HasMethod("Collected"))
+            if (collisionInfo.GetCollider().GetType() == typeof(Ball))
+            {
+                Ball ball = (Ball)collisionInfo.GetCollider();
+                ball.OnHitPaddle(this,collisionInfo.GetNormal());
+            }
+            else if (collisionInfo.GetCollider().HasMethod("Collected"))
             {
                 PowerUp powerUp = (PowerUp)collisionInfo.GetCollider();
                 powerUp.Collected();

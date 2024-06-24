@@ -10,7 +10,7 @@ size = Vector2(64, 64)
 collision_layer = 16
 script = ExtResource("1_wgkus")
 
-[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 2.08165e-12)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_7d8rd")

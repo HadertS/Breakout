@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using Godot;
 
 public partial class Ball : CharacterBody2D
@@ -34,36 +35,7 @@ public partial class Ball : CharacterBody2D
             {
                 if (collisionInfo.GetCollider().GetType() == typeof(Paddle))
                 {
-                    BallPiercing = GetNode<GlobalVariables>(
-                        "/root/GlobalVariables"
-                    ).BallPiercingLevel;
-
-                    if (
-                        GetNode<Paddle>("/root/Level/Paddle").CurrentPaddlestate
-                        == Paddle.PaddleState.Sticky
-                    )
-                    {
-                        velocity = new Vector2(0, 0);
-                        isStuckToPaddle = true;
-                    }
-                    else
-                    {
-                        //forms a vector pointing from the paddle to the ball. The further out from the center of the paddle, the wider the ball will go.
-                        Vector2 relativeVector =
-                            (
-                                GlobalPosition
-                                - (Vector2)collisionInfo.GetCollider().GetIndexed("global_position")
-                            ).Normalized()
-                            * speed
-                            * GetNode<GlobalVariables>("/root/GlobalVariables").SlowTimeFactor;
-                        //mix of standard bounce collision and the relative vector. Adjust the mix to change bounce behaviour.
-                        velocity =
-                            (
-                                velocity.Bounce(collisionInfo.GetNormal()) / 2 + relativeVector / 2
-                            ).Normalized()
-                            * speed
-                            * GetNode<GlobalVariables>("/root/GlobalVariables").SlowTimeFactor;
-                    }
+                    OnHitPaddle((Paddle)collisionInfo.GetCollider(), collisionInfo.GetNormal());
                 }
                 else if (collisionInfo.GetCollider().GetType() == typeof(Block))
                 {
@@ -147,5 +119,37 @@ public partial class Ball : CharacterBody2D
             0.1f * GetNode<GlobalVariables>("/root/GlobalVariables").BallSizeLevel,
             0.1f * GetNode<GlobalVariables>("/root/GlobalVariables").BallSizeLevel
         );
+    }
+
+    public void OnHitPaddle(Paddle Paddle, Vector2 CollisionNormal)
+    {
+        BallPiercing = GetNode<GlobalVariables>("/root/GlobalVariables").BallPiercingLevel;
+
+        if (GetNode<Paddle>("/root/Level/Paddle").CurrentPaddlestate == Paddle.PaddleState.Sticky)
+        {
+            velocity = new Vector2(0, 0);
+            isStuckToPaddle = true;
+        }
+        else
+        {
+            if (CollisionNormal == new Vector2(0, -1))
+            {
+                //forms a vector pointing from the paddle to the ball. The further out from the center of the paddle, the wider the ball will go.
+                Vector2 relativeVector =
+                    (GlobalPosition - (Vector2)Paddle.GetIndexed("global_position")).Normalized()
+                    * speed
+                    * GetNode<GlobalVariables>("/root/GlobalVariables").SlowTimeFactor;
+                //mix of standard bounce collision and the relative vector. Adjust the mix to change bounce behaviour.
+                velocity =
+                    (velocity.Bounce(CollisionNormal) / 2 + relativeVector / 2).Normalized()
+                        * speed
+                        * GetNode<GlobalVariables>("/root/GlobalVariables").SlowTimeFactor
+                    ;
+            }
+            else
+            {
+                velocity = velocity.Bounce(CollisionNormal);
+            }
+        }
     }
 }
