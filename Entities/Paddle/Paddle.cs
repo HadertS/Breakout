@@ -32,7 +32,8 @@ public partial class Paddle : CharacterBody2D
     {
         Vector2 inputDir =
             new(Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left"), 0);
-        Velocity = inputDir * Speed * GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSpeedLevel;
+        Velocity =
+            inputDir * Speed * GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSpeedLevel;
         KinematicCollision2D collisionInfo = MoveAndCollide(Velocity * (float)delta);
 
         if (collisionInfo != null)
@@ -40,7 +41,7 @@ public partial class Paddle : CharacterBody2D
             if (collisionInfo.GetCollider().GetType() == typeof(Ball))
             {
                 Ball ball = (Ball)collisionInfo.GetCollider();
-                ball.OnHitPaddle(this,collisionInfo.GetNormal());
+                ball.OnHitPaddle(this, collisionInfo.GetNormal());
             }
             else if (collisionInfo.GetCollider().HasMethod("Collected"))
             {
