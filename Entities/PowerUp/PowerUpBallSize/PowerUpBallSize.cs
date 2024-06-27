@@ -2,12 +2,6 @@ using Godot;
 
 public partial class PowerUpBallSize : PowerUp
 {
-    [Signal]
-    public delegate void BallSizeIncreaseEventHandler();
-
-    [Signal]
-    public delegate void BallSizeDecreaseEventHandler();
-
     [Export]
     public bool IsIncrease { get; set; } = true;
 
