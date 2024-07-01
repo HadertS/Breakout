@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 using Godot;
 
 public partial class Ball : CharacterBody2D
@@ -6,10 +7,8 @@ public partial class Ball : CharacterBody2D
     private int speed = 400;
     private int BallPiercing = 0;
     private Vector2 velocity;
-    private Vector2 startPosition;
     private Vector2 previousPosition;
-    private bool isStuckToPaddle = false;
-
+    public bool isStuckToPaddle = false;
     private bool collisionTimout = false;
 
     public override void _Ready()
@@ -18,7 +17,7 @@ public partial class Ball : CharacterBody2D
             0,
             1 * speed * GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSpeedLevel
         );
-        startPosition = Position;
+        Position = GetNode<Paddle>("/root/Level/Paddle").Position + new Vector2(0, -100);
         this.Scale = new Vector2(
             0.1f * GetNode<GlobalVariables>("/root/GlobalVariables").BallSizeLevel,
             0.1f * GetNode<GlobalVariables>("/root/GlobalVariables").BallSizeLevel
@@ -54,13 +53,22 @@ public partial class Ball : CharacterBody2D
             }
         }
 
-        if (
-            (Position == previousPosition && !isStuckToPaddle)
-            || Position.Y > GetViewportRect().Size.Y
-        )
+        if ((Position == previousPosition && !isStuckToPaddle))
         {
-            //Ball is stuck in place or is out of bounds
+            //Ball is stuck in place
             ResetBall();
+        }
+        else if (Position.Y > GetViewportRect().Size.Y)
+        {
+            //Ball is out of bounds, if more than 1 ball is in play, destroy this ball. Otherwise, reset the ball.
+            if (GetTree().GetNodesInGroup("Balls").Count > 1)
+            {
+                QueueFree();
+            }
+            else
+            {
+                ResetBall();
+            }
         }
 
         previousPosition = Position;
@@ -68,7 +76,7 @@ public partial class Ball : CharacterBody2D
 
     private void ResetBall()
     {
-        Position = startPosition;
+        Position = GetNode<Paddle>("/root/Level/Paddle").Position + new Vector2(0, -100);
         velocity =
             new Vector2(0, 1)
             * speed

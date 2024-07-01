@@ -25,7 +25,13 @@ public partial class StickyPaddle : ActivatablePower
         if (GetNode<Paddle>("/root/Level/Paddle").CurrentPaddlestate == Paddle.PaddleState.Sticky)
         {
             GetNode<Paddle>("/root/Level/Paddle").CurrentPaddlestate = Paddle.PaddleState.Default;
-            GetNode<Ball>("/root/Level/Ball").CallDeferred("Launch");
+            foreach (Ball ball in GetTree().GetNodesInGroup("Balls"))
+            {
+                if (ball.isStuckToPaddle)
+                {
+                    ball.CallDeferred("Launch");
+                }
+            }
         }
     }
 }

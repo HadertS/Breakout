@@ -8,7 +8,7 @@ public partial class Block : Node2D
 
     [Export(
         PropertyHint.Enum,
-        "None,PaddleSizeIncrease,PaddleSizeDecrease,StickyPaddle,SlowTime,BallPiercing,PaddleSpeedIncrease,PaddleSpeedDecrease,BallSizeIncrease,BallSizeDecrease,BallSpeedIncrease,BallSpeedDecrease"
+        "None,PaddleSizeIncrease,PaddleSizeDecrease,StickyPaddle,SlowTime,BallPiercing,PaddleSpeedIncrease,PaddleSpeedDecrease,BallSizeIncrease,BallSizeDecrease,BallSpeedIncrease,BallSpeedDecrease,Multiball"
     )]
     public string PowerUpType { get; set; } = "None";
     AnimatedSprite2D animatedSprite2D;
@@ -141,6 +141,16 @@ public partial class Block : Node2D
                     PowerUpBallSpeed powerUpInstance =
                         powerUpScene.Instantiate() as PowerUpBallSpeed;
                     powerUpInstance.IsIncrease = false;
+                    GetParent().AddChild(powerUpInstance);
+                    powerUpInstance.Position = Position;
+                }
+                else if (PowerUpType == "Multiball")
+                {
+                    PackedScene powerUpScene = GD.Load<PackedScene>(
+                        "res://Entities/PowerUp/PowerUpMultiball/PowerUpMultiball.tscn"
+                    );
+                    PowerUpMultiball powerUpInstance =
+                        powerUpScene.Instantiate() as PowerUpMultiball;
                     GetParent().AddChild(powerUpInstance);
                     powerUpInstance.Position = Position;
                 }

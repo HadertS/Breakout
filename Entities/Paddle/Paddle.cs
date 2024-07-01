@@ -35,9 +35,10 @@ public partial class Paddle : CharacterBody2D
         Velocity =
             inputDir * Speed * GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSpeedLevel;
         KinematicCollision2D collisionInfo = MoveAndCollide(Velocity * (float)delta);
-
+        GD.Print();
         if (collisionInfo != null)
         {
+            Velocity = new Vector2(0, 0);
             if (collisionInfo.GetCollider().GetType() == typeof(Ball))
             {
                 Ball ball = (Ball)collisionInfo.GetCollider();
