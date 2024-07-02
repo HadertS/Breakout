@@ -15,7 +15,7 @@ public partial class Ball : CharacterBody2D
     {
         velocity = new Vector2(
             0,
-            1 * speed * GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSpeedLevel
+            -1 //* speed * GetNode<GlobalVariables>("/root/GlobalVariables").BallSpeedLevel
         );
         Position = GetNode<Paddle>("/root/Level/Paddle").Position + new Vector2(0, -100);
         this.Scale = new Vector2(
@@ -78,9 +78,9 @@ public partial class Ball : CharacterBody2D
     {
         Position = GetNode<Paddle>("/root/Level/Paddle").Position + new Vector2(0, -100);
         velocity =
-            new Vector2(0, 1)
+            new Vector2(0, -1)
             * speed
-            * GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSpeedLevel
+            //* GetNode<GlobalVariables>("/root/GlobalVariables").BallSpeedLevel
             * GetNode<GlobalVariables>("/root/GlobalVariables").SlowTimeFactor;
         collisionTimout = false;
     }
@@ -92,7 +92,7 @@ public partial class Ball : CharacterBody2D
             velocity =
                 new Vector2(0, -1)
                 * speed
-                * GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSpeedLevel
+                //* GetNode<GlobalVariables>("/root/GlobalVariables").BallSpeedLevel
                 * GetNode<GlobalVariables>("/root/GlobalVariables").SlowTimeFactor;
             isStuckToPaddle = false;
         }
@@ -147,13 +147,13 @@ public partial class Ball : CharacterBody2D
                     Vector2 relativeVector =
                         (GlobalPosition - Paddle.GlobalPosition).Normalized()
                         * speed
-                        * GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSpeedLevel
+                        //* GetNode<GlobalVariables>("/root/GlobalVariables").BallSpeedLevel
                         * GetNode<GlobalVariables>("/root/GlobalVariables").SlowTimeFactor;
                     //mix of standard bounce collision and the relative vector. Adjust the mix to change bounce behaviour.
                     velocity =
                         (velocity.Bounce(CollisionNormal) / 2 + relativeVector / 2).Normalized()
                         * speed
-                        * GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSpeedLevel
+                        //* GetNode<GlobalVariables>("/root/GlobalVariables").BallSpeedLevel
                         * GetNode<GlobalVariables>("/root/GlobalVariables").SlowTimeFactor;
                     collisionTimout = true;
                 }
@@ -162,7 +162,7 @@ public partial class Ball : CharacterBody2D
                     velocity =
                         velocity.Bounce(CollisionNormal).Normalized() * speed
                         + Paddle.Velocity
-                            * GetNode<GlobalVariables>("/root/GlobalVariables").PaddleSpeedLevel
+                            //* GetNode<GlobalVariables>("/root/GlobalVariables").BallSpeedLevel
                             * GetNode<GlobalVariables>("/root/GlobalVariables").SlowTimeFactor;
                     collisionTimout = true;
                 }
@@ -187,11 +187,11 @@ public partial class Ball : CharacterBody2D
 
     public void OnBallSpeedIncrease()
     {
-        velocity *= 0.5f;
+        //velocity *= 0.5f;
     }
 
     public void OnBallSpeedDecrease()
     {
-        velocity /= 0.5f;
+        //velocity /= 0.5f;
     }
 }
