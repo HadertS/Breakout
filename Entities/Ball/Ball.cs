@@ -15,7 +15,7 @@ public partial class Ball : CharacterBody2D
     {
         velocity = new Vector2(
             0,
-            -1 //* speed * GetNode<GlobalVariables>("/root/GlobalVariables").BallSpeedLevel
+            -1 * speed * GetNode<GlobalVariables>("/root/GlobalVariables").BallSpeedLevel
         );
         Position = GetNode<Paddle>("/root/Level/Paddle").Position + new Vector2(0, -100);
         this.Scale = new Vector2(
